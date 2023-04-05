@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is a MERN stack project. This particular repo is for React.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "index.jsx",
     "start": "react-scripts start"
   },
   "repository": {
