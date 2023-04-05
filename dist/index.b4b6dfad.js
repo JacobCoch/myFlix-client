@@ -27185,19 +27185,50 @@ const MainView = ()=>{
         };
         fetchData();
     }, []);
-    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewJsx.MovieView), {
-        movie: selectedMovie,
-        onBackClick: ()=>setSelectedMovie(null)
-    }, void 0, false, {
-        fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 44,
-        columnNumber: 7
-    }, undefined);
+    if (selectedMovie) {
+        const similarMovies = movies.filter((movie)=>movie.Genre.Name === selectedMovie.Genre.Name);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewJsx.MovieView), {
+                    movie: selectedMovie,
+                    onBackClick: ()=>setSelectedMovie(null)
+                }, void 0, false, {
+                    fileName: "src/components/MainView/main-view.jsx",
+                    lineNumber: 48,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
+                    fileName: "src/components/MainView/main-view.jsx",
+                    lineNumber: 52,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    children: "Similar Movies"
+                }, void 0, false, {
+                    fileName: "src/components/MainView/main-view.jsx",
+                    lineNumber: 53,
+                    columnNumber: 9
+                }, undefined),
+                similarMovies.map((movie)=>movie.Title !== selectedMovie.Title && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardJsx.MovieCard), {
+                        movie: movie,
+                        onMovieClick: (newSelectedMovie)=>setSelectedMovie(newSelectedMovie)
+                    }, movie._id, false, {
+                        fileName: "src/components/MainView/main-view.jsx",
+                        lineNumber: 57,
+                        columnNumber: 15
+                    }, undefined))
+            ]
+        }, void 0, true, {
+            fileName: "src/components/MainView/main-view.jsx",
+            lineNumber: 47,
+            columnNumber: 7
+        }, undefined);
+    }
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: " The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 52,
+        lineNumber: 71,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27208,12 +27239,12 @@ const MainView = ()=>{
                 }
             }, movie._id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 58,
+                lineNumber: 77,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 56,
+        lineNumber: 75,
         columnNumber: 5
     }, undefined);
 };
