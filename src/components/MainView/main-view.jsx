@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { MovieView } from '../MovieView/movie-view.jsx';
 import { MovieCard } from '../MovieCard/movie-card.jsx';
+import { LoginView } from '../LoginView/login-view.jsx';
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -38,6 +39,10 @@ export const MainView = () => {
     };
     fetchData();
   }, []);
+  
+  if (!user) { 
+    return <LoginView />;
+  }
 
   if (selectedMovie) {
     const similarMovies = movies.filter(
