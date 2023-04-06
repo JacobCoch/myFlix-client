@@ -6,6 +6,7 @@ import { LoginView } from '../LoginView/login-view.jsx';
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,8 +40,8 @@ export const MainView = () => {
     };
     fetchData();
   }, []);
-  
-  if (!user) { 
+
+  if (!user) {
     return <LoginView />;
   }
 
