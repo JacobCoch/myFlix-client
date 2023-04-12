@@ -1,0 +1,8 @@
+export const signupView = () => {
+  const handleSubmit = (e) => {};
+  return (
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
