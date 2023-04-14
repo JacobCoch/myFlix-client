@@ -17,7 +17,7 @@ export const LoginView = () => {
       Birthday: birthday,
     };
 
-    fetch('SIGNUP_URL', {
+    fetch('https://mymovieapidb.herokuapp.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

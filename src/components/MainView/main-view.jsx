@@ -14,7 +14,7 @@ export const MainView = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch('https://mymovieapidb.herokuapp.com/movies')
+      fetch('https://mymovieapidb.herokuapp.com/')
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -42,7 +42,6 @@ export const MainView = () => {
         })
         .catch((error) => {
           console.error('Error fetching data: ', error);
-          setError(error);
         });
     };
     fetchData();
@@ -102,8 +101,7 @@ export const MainView = () => {
         <button
           onClick={() => {
             setUser(null);
-          }}
-        >
+          }}>
           Logout
         </button>
       </div>
@@ -130,8 +128,7 @@ export const MainView = () => {
           setUser(null);
           setToken(null);
           localStorage.clear();
-        }}
-      >
+        }}>
         Logout
       </button>
     </div>
