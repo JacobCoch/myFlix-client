@@ -6,10 +6,12 @@ export const LoginView = () => {
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
 
+  // function to handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevents page from reloading
     console.log(username, password);
 
+    // data to be sent in the request body
     const data = {
       Username: username,
       Password: password,
@@ -17,27 +19,25 @@ export const LoginView = () => {
       Birthday: birthday,
     };
 
+    // fetch request to the API
     fetch('https://mymovieapidb.herokuapp.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-      mode: 'no-cors',
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Success:', data);
+        console.log('Login response: ', data);
         if (data.user) {
-          localStorage.setItem('token', data.token);
-          localStorage.setItem('user', JSON.stringify(data.user));
           onLoggedIn(data.user, data.token);
         } else {
-          alert('No such user exists');
+          alert('No such user');
         }
       })
-      .catch((error) => {
-        console.error('Error:', error);
+      .catch((e) => {
+        alert('Something went wrong');
       });
   };
   return (
@@ -61,24 +61,6 @@ export const LoginView = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
           name="password"
-        />
-      </label>
-      <label>
-        Email:
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Birthday:
-        <input
-          type="date"
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-          required
         />
       </label>
       <button type="submit">Submit</button>

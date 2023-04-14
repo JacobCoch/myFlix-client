@@ -13,6 +13,19 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
 
   useEffect(() => {
+    if (!token) return;
+
+    fetch('https://mymovieapidb.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => response.json())
+      .then((movies) => {
+        setMovies(movies);
+      });
+  }, [token]);
+
+  // fetch movies from API using the useEffect hook
+  useEffect(() => {
     const fetchData = () => {
       fetch('https://mymovieapidb.herokuapp.com/')
         .then((response) => {
@@ -22,6 +35,7 @@ export const MainView = () => {
           return response.json();
         })
         .then((data) => {
+          // Manipulating data from the API response and updating movies state
           const moviesFromApi = data.map((movie) => ({
             _id: movie._id,
             Title: movie.Title,
@@ -47,6 +61,7 @@ export const MainView = () => {
     fetchData();
   }, []);
 
+  // if no user is logged in, show LoginView and/or SignupView
   if (!user) {
     return (
       <>
@@ -62,21 +77,10 @@ export const MainView = () => {
     );
   }
 
-  useEffect(() => {
-    if (!token) return;
-
-    fetch('https://mymovieapidb.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => response.json())
-      .then((movies) => {
-        setMovies(movies);
-      });
-  }, [token]);
-
   if (selectedMovie) {
+    // if a movie is selected, render MovieView with similar movies
     const similarMovies = movies.filter(
-      (movie) => movie.Genre.Name === selectedMovie.Genre.Name // only show movies with the same genre as the selected movie
+      (movie) => movie.Genre.Name === selectedMovie.Genre.Name
     );
     return (
       <div>
@@ -108,10 +112,12 @@ export const MainView = () => {
     );
   }
 
+  // if no movies, show empty message
   if (movies.length === 0) {
     return <div> The list is empty!</div>;
   }
 
+  // if movies are available, render MovieCard for each movie
   return (
     <div>
       {movies.map((movie) => (
