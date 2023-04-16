@@ -27169,6 +27169,7 @@ const MainView = ()=>{
             }
         }).then((response)=>response.json()).then((movies)=>{
             setMovies(movies);
+            console.log(movies);
         });
     }, [
         token
@@ -27192,10 +27193,12 @@ const MainView = ()=>{
                             Bio: movie.Director.Bio
                         },
                         Genre: {
-                            Name: movie.Genre.Name
+                            Name: movie.Genre.Name,
+                            Description: movie.Genre.Description
                         },
-                        Actors: [],
-                        ImagePath: movie.ImagePath
+                        Actors: movie.Actors,
+                        ImagePath: movie.ImagePath,
+                        Featured: movie.Featured
                     }));
                 setMovies(moviesFromApi);
             }).catch((error)=>{
@@ -27203,28 +27206,20 @@ const MainView = ()=>{
             });
         };
         fetchData();
-    }, []);
+    }, [
+        token
+    ]);
     // if no user is logged in, show LoginView and/or SignupView
-    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewJsx.LoginView), {
-                onLoggedIn: (user, token)=>{
-                    setUser(user);
-                    setToken(token);
-                }
-            }, void 0, false, {
-                fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 68,
-                columnNumber: 9
-            }, undefined),
-            "or",
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupViewJsx.SignupView), {}, void 0, false, {
-                fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 75,
-                columnNumber: 9
-            }, undefined)
-        ]
-    }, void 0, true);
+    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewJsx.LoginView), {
+        onLoggedIn: (user, token)=>{
+            setUser(user);
+            setToken(token);
+        }
+    }, void 0, false, {
+        fileName: "src/components/MainView/main-view.jsx",
+        lineNumber: 70,
+        columnNumber: 7
+    }, undefined);
     if (selectedMovie) {
         // if a movie is selected, render MovieView with similar movies
         const similarMovies = movies.filter((movie)=>movie.Genre.Name === selectedMovie.Genre.Name);
@@ -28503,12 +28498,10 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
-const LoginView = ()=>{
+const LoginView = ({ onLoggedIn  })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
-    const [email, setEmail] = (0, _react.useState)("");
-    const [birthday, setBirthday] = (0, _react.useState)("");
     // function to handle form submission
     const handleSubmit = (e)=>{
         e.preventDefault(); // prevents page from reloading
@@ -28516,9 +28509,7 @@ const LoginView = ()=>{
         // data to be sent in the request body
         const data = {
             Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday
+            Password: password
         };
         // fetch request to the API
         fetch("https://mymovieapidb.herokuapp.com/login", {
@@ -28526,13 +28517,18 @@ const LoginView = ()=>{
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            mode: "cors"
         }).then((response)=>response.json()).then((data)=>{
             console.log("Login response: ", data);
-            if (data.user) onLoggedIn(data.user, data.token);
-            else alert("No such user");
+            if (data.user) {
+                localStorage.setItem("user", JSON.stringify(data.user));
+                localStorage.setItem("token", data.token);
+                onLoggedIn(data.user, data.token);
+            } else alert("No such user");
         }).catch((e)=>{
             alert("Something went wrong");
+            console.error("Login error: ", e);
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -28550,13 +28546,13 @@ const LoginView = ()=>{
                         name: "username"
                     }, void 0, false, {
                         fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 47,
+                        lineNumber: 46,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 45,
+                lineNumber: 44,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28570,13 +28566,13 @@ const LoginView = ()=>{
                         name: "password"
                     }, void 0, false, {
                         fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 58,
+                        lineNumber: 57,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 56,
+                lineNumber: 55,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28584,17 +28580,17 @@ const LoginView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 66,
+                lineNumber: 65,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/LoginView/login-view.jsx",
-        lineNumber: 44,
+        lineNumber: 43,
         columnNumber: 5
     }, undefined);
 };
-_s(LoginView, "tdA1KK8yaZidqYo0wscqshHt/KE=");
+_s(LoginView, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
 _c = LoginView;
 var _c;
 $RefreshReg$(_c, "LoginView");

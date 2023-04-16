@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 
-export const LoginView = () => {
+export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [birthday, setBirthday] = useState('');
 
   // function to handle form submission
   const handleSubmit = (e) => {
@@ -15,22 +13,21 @@ export const LoginView = () => {
     const data = {
       Username: username,
       Password: password,
-      Email: email,
-      Birthday: birthday,
     };
 
     // fetch request to the API
     fetch('https://mymovieapidb.herokuapp.com/login', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
+      mode: 'cors',
     })
       .then((response) => response.json())
       .then((data) => {
         console.log('Login response: ', data);
         if (data.user) {
+          localStorage.setItem('user', JSON.stringify(data.user));
+          localStorage.setItem('token', data.token);
           onLoggedIn(data.user, data.token);
         } else {
           alert('No such user');
@@ -38,8 +35,10 @@ export const LoginView = () => {
       })
       .catch((e) => {
         alert('Something went wrong');
+        console.error('Login error: ', e);
       });
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <label>

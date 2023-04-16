@@ -21,6 +21,7 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((movies) => {
         setMovies(movies);
+        console.log(movies);
       });
   }, [token]);
 
@@ -48,9 +49,11 @@ export const MainView = () => {
             },
             Genre: {
               Name: movie.Genre.Name,
+              Description: movie.Genre.Description,
             },
-            Actors: [],
+            Actors: movie.Actors,
             ImagePath: movie.ImagePath,
+            Featured: movie.Featured,
           }));
           setMovies(moviesFromApi);
         })
@@ -59,21 +62,17 @@ export const MainView = () => {
         });
     };
     fetchData();
-  }, []);
+  }, [token]);
 
   // if no user is logged in, show LoginView and/or SignupView
   if (!user) {
     return (
-      <>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        or
-        <SignupView />
-      </>
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
     );
   }
 
@@ -82,6 +81,7 @@ export const MainView = () => {
     const similarMovies = movies.filter(
       (movie) => movie.Genre.Name === selectedMovie.Genre.Name
     );
+
     return (
       <div>
         <MovieView
