@@ -10,28 +10,27 @@ export const SignupView = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  };
 
-  const data = {
-    Username: username,
-    Password: password,
-    Email: email,
-    Birthday: birthday,
-  };
+    const data = {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday,
+    };
 
-  fetch('https://mymovieapidb.herokuapp.com/users', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-    mode: 'no-cors',
-  }).then((response) => {
-    if (response.ok) {
-      alert('User created');
-      return response.json();
-    } else {
-      alert('Something went wrong');
-    }
-  });
+    fetch('https://mymovieapidb.herokuapp.com/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        alert('User created');
+        return response.json();
+      } else {
+        alert('Something went wrong');
+      }
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
