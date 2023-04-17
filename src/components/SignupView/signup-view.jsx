@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export const SignupView = () => {
   const [username, setUsername] = useState('');
@@ -6,48 +8,60 @@ export const SignupView = () => {
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  const data = {
+    Username: username,
+    Password: password,
+    Email: email,
+    Birthday: birthday,
+  };
+
+  fetch('https://mymovieapidb.herokuapp.com/users', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+    mode: 'no-cors',
+  }).then((response) => {
+    if (response.ok) {
+      alert('User created');
+      return response.json();
+    } else {
+      alert('Something went wrong');
+    }
+  });
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
+      <Form.Group controlId="formBasicUsername">
+        <Form.Label>Username</Form.Label>
+        <Form.Control
           type="text"
+          placeholder="Enter username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          minLength="3"
+          minLength={5}
+          name="username"
         />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Email:
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Birthday:
-        <input
-          type="date"
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Submit</button>
+      </Form.Group>
+      <Form.Group controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" />
+      </Form.Group>
+      <Form.Group controlId="formbasicEmail">
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="email" placeholder="Enter email" />
+      </Form.Group>
+      <Form.Group controlId="formbasicBirthday">
+        <Form.Label>Birthday</Form.Label>
+        <Form.Control type="date" placeholder="Enter birthday" />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };

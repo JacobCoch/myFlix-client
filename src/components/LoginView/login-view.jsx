@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   // function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault(); // prevents page from reloading
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // prevents page from reloading
     console.log(username, password);
 
     // data to be sent in the request body
@@ -14,55 +16,72 @@ export const LoginView = ({ onLoggedIn }) => {
       Username: username,
       Password: password,
     };
+    console.log(data);
 
     // fetch request to the API
-    fetch('https://mymovieapidb.herokuapp.com/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-      mode: 'cors',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Login response: ', data);
-        if (data.user) {
-          localStorage.setItem('user', JSON.stringify(data.user));
-          localStorage.setItem('token', data.token);
-          onLoggedIn(data.user, data.token);
+    const loginUser = async (data) => {
+      try {
+        const response = await fetch(
+          'https://mymovieapidb.herokuapp.com/login',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              mode: 'no-cors',
+            },
+            body: JSON.stringify(data),
+          }
+        );
+
+        const responseData = await response.json();
+
+        if (responseData.user) {
+          localStorage.setItem('user', JSON.stringify(responseData.user));
+          localStorage.setItem('token', responseData.token);
+          // dispatch(setUser(responseData.user));
+          // dispatch(setToken(responseData.token));
         } else {
           alert('No such user');
         }
-      })
-      .catch((e) => {
+      } catch (error) {
         alert('Something went wrong');
-        console.error('Login error: ', e);
-      });
-  };
+        console.log(error);
+      }
+    };
+    loginUser();
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          minLength={5}
-          name="username"
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          name="password"
-        />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
-  );
+    return (
+      <form onSubmit={handleSubmit}>
+        <Form.Group controlId="formBasicUsername">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            minLength={5}
+            name="username"
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            minLength={5}
+            name="password"
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </form>
+    );
+  };
 };

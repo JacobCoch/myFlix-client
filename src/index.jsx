@@ -1,10 +1,17 @@
 import { createRoot } from 'react-dom/client';
 import { MainView } from './components/MainView/main-view.jsx';
+import Container from 'react-bootstrap/Container';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.scss';
 
 const App = () => {
-  return <MainView />;
+  return (
+    <Container>
+      <MainView />
+    </Container>
+  );
 };
 
 const container = document.querySelector('#root'); // #root is the id of the div in index.html

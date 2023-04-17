@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MovieView } from '../MovieView/movie-view.jsx';
 import { MovieCard } from '../MovieCard/movie-card.jsx';
 import { LoginView } from '../LoginView/login-view.jsx';
@@ -13,19 +13,36 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) {
+      return;
+    }
 
+    // Get User on every reload
+    getUser();
+
+    // Get movies
+    fetchMovies();
+  }, [token]);
+
+  const fetchMovies = () => {
     fetch('https://mymovieapidb.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
-      .then((movies) => {
-        setMovies(movies);
-        console.log(movies);
+      .then((data) => {
+        const moviesFromApi = data.map((movie) => ({
+          _id: movie._id,
+          Title: movie.Title,
+          Description: movie.Description,
+          ImagePath: movie.ImagePath,
+        }));
+        setMovies(moviesFromApi);
+      })
+      .catch((error) => {
+        console.error(error);
       });
-  }, [token]);
+  };
 
-  // fetch movies from API using the useEffect hook
   useEffect(() => {
     const fetchData = () => {
       fetch('https://mymovieapidb.herokuapp.com/')
@@ -82,6 +99,7 @@ export const MainView = () => {
       (movie) => movie.Genre.Name === selectedMovie.Genre.Name
     );
 
+    // render MovieView with selected movie and similar movies
     return (
       <div>
         <MovieView
