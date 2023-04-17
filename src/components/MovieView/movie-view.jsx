@@ -1,39 +1,47 @@
 import PropTypes from 'prop-types';
+import { Row, Col, Image, Button } from 'react-bootstrap';
+import './movie-view.scss';
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div>
-      <div>
-        <img src={movie.ImagePath} />
-      </div>
-      <div>
-        <span>Title: </span>
-        <span>{movie.Title}</span>
-      </div>
-      <div>
-        <span> Rating: </span>
-        <span>{movie.Rating}</span>
-      </div>
-      <div>
-        <span>Description: </span>
-        <span>{movie.Description}</span>
-      </div>
-      <div>
-        <span>Genre: </span>
-        <span>{movie.Genre.Name}</span>
-      </div>
-      <div>
-        <span>Director: </span>
-        <span>{movie.Director.Name}</span>
-      </div>
-      <div>
-        <span>Actors: </span>
-        <span>{movie.Actors.map((actor) => actor).join(', ')}</span>
-      </div>
-      <div>
-        <button onClick={onBackClick}>Back</button>
-      </div>
-    </div>
+    <Row className="justify-content-md-center">
+      <Col className="text-center">
+        <Image
+          src={movie.ImagePath}
+          alt={movie.Title}
+          fluid
+          className="movie-image"
+        />
+      </Col>
+      <Col xs={20} md={20}>
+        <div>
+          <span>Title: </span>
+          <span>{movie.Title}</span>
+        </div>
+        <div>
+          <span>Description: </span>
+          <span>{movie.Description}</span>
+        </div>
+        <div>
+          <span>Genre: </span>
+          <span>{movie.Genre.Name}</span>
+        </div>
+        <div>
+          <span>Director: </span>
+          <span>{movie.Director.Name}</span>
+        </div>
+        <Button
+          onClick={onBackClick}
+          className="back-button"
+          style={{
+            cursor: 'pointer',
+            backgroundColor: 'black',
+            color: 'white',
+          }}>
+          Back
+        </Button>
+      </Col>
+    </Row>
   );
 };
 
