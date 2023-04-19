@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Link } from 'react-router-dom';
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
@@ -27,13 +31,13 @@ export const LoginView = ({ onLoggedIn }) => {
         if (data.user) {
           localStorage.setItem('user', JSON.stringify(data.user));
           localStorage.setItem('token', data.token);
-          onLoggedIn(data.user, data.token);
         } else {
           alert('No such user');
         }
       })
       .catch((e) => {
         alert('Something went wrong');
+        console.error('Login error: ', e);
       });
   };
 
