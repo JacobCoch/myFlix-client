@@ -10,8 +10,9 @@ import { Container } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import { Routes, BrowserRouter, Route, Navigate } from 'react-router-dom';
 
-//! WIP, movieview not working, need to fix
+//! WIP, Cant open movieCard
 //! WIP, cant sign up
+//! something is wrong with the routing in the Mainview return
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
