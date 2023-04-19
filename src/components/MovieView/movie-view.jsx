@@ -1,10 +1,17 @@
 import PropTypes from 'prop-types';
 
-export const MovieView = ({ movie, onBackClick }) => {
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './movie-view.scss';
+
+export const MovieView = ({ movies }) => {
+  const { movieId } = useParams(); // useParams is a hook that allows us to access the URL parameters
+  const movie = movies.find((movie) => movie._id === movieId);
+
   return (
     <div>
       <div>
-        <img src={movie.ImagePath} />
+        <img className="w-100" src={movie.ImagePath} />
       </div>
       <div>
         <span>Title: </span>
@@ -26,13 +33,9 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span>Director: </span>
         <span>{movie.Director.Name}</span>
       </div>
-      <div>
-        <span>Actors: </span>
-        <span>{movie.Actors.map((actor) => actor).join(', ')}</span>
-      </div>
-      <div>
-        <button onClick={onBackClick}>Back</button>
-      </div>
+      <Link to={`/`}>
+        <button className="back-button">Back</button>
+      </Link>
     </div>
   );
 };
