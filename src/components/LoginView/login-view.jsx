@@ -1,10 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom';
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
@@ -25,7 +21,14 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          onLoggedIn(username);
+          return response.json();
+        } else {
+          alert('Incorrect username or password');
+        }
+      })
       .then((data) => {
         console.log('Login response: ', data);
         if (data.user) {
@@ -42,7 +45,7 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formBasicUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control
@@ -72,6 +75,6 @@ export const LoginView = ({ onLoggedIn }) => {
       <Button variant="primary" type="submit">
         Submit
       </Button>
-    </form>
+    </Form>
   );
 };
