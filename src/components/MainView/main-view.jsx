@@ -83,27 +83,35 @@ export const MainView = () => {
           <Route
             path="/signup"
             element={
-              <>{user.Username ? <Navigate to="/" /> : <SignupView />}</> // if user is logged in, redirect to home page, else show signup
+              <>{user ? <Navigate to="/" /> : <SignupView />}</> // if user is logged in, redirect to home page, else show signup
             }
           />
 
           <Route
             path="/login"
-            element={<>{user.Username ? <Navigate to="/" /> : <LoginView />}</>} // if user is logged in, redirect to home page, else show login
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <LoginView onLoggedIn={(user) => setUser(user)} />
+                )}
+              </>
+            }
           />
 
           <Route
             path="/movies/:movieId"
             element={
               <>
-                {!user.Username ? ( // if user is not logged in, redirect to login page
+                {!user ? ( // if user is not logged in, redirect to login page
                   <Navigate to="/login" />
                 ) : movies.length === 0 ? (
                   <Col>Loading ...</Col>
                 ) : (
                   <Row className="justify-content-md-center py-5">
                     <Col md={8} className="mb-5">
-                      <MovieView />
+                      <MovieView movies={movies} />
                     </Col>
                   </Row>
                 )}
@@ -115,24 +123,18 @@ export const MainView = () => {
             path="/"
             element={
               <>
-                {!user.Username ? (
-                  <Navigate to="/login" />
+                {!user ? (
+                  <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
                   <Col>Loading ...</Col>
                 ) : (
-                  <Row className="justify-content-md-center py-5">
-                    {searchString
-                      ? movies
-                          .filter((movie) =>
-                            movie.Title.toLowerCase().includes(searchString)
-                          )
-                          .map((movie) => (
-                            <MovieCard movie={movie} key={movie._id} />
-                          ))
-                      : movies.map((movie) => (
-                          <MovieCard movie={movie} key={movie._id} />
-                        ))}
-                  </Row>
+                  <>
+                    {movies.map((movie) => (
+                      <Col className="mb-5" key={movie._id} md={3}>
+                        <MovieCard movie={movie} />
+                      </Col>
+                    ))}
+                  </>
                 )}
               </>
             }
@@ -140,9 +142,7 @@ export const MainView = () => {
 
           <Route
             path="/profile"
-            element={
-              <>{!user.username ? <ProfileView /> : <Navigate to="/login" />}</>
-            }
+            element={<>{!user ? <ProfileView /> : <Navigate to="/login" />}</>}
           />
         </Routes>
       </Container>
