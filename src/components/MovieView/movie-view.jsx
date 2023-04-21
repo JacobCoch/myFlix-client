@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './movie-view.scss';
@@ -38,26 +38,4 @@ export const MovieView = ({ movies }) => {
       </Link>
     </div>
   );
-};
-
-MovieView.propTypes = {
-  movie: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
-    Year: PropTypes.number.isRequired,
-    Description: PropTypes.string.isRequired,
-    Rating: PropTypes.number.isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-    }).isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string,
-    }),
-    Actors: PropTypes.arrayOf(PropTypes.string.isRequired),
-    ImagePath: PropTypes.string.isRequired,
-    Featured: PropTypes.bool,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
 };
