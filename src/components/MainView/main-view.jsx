@@ -10,17 +10,12 @@ import { Container } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import { Routes, BrowserRouter, Route, Navigate } from 'react-router-dom';
 
-//! WIP, Cant open movieCard
-//! WIP, cant sign up
-//! something is wrong with the routing in the Mainview return
-
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const storedToken = localStorage.getItem('token');
   const [user, setUser] = useState(storedUser ? storedUser : null); // if there is a user in local storage, set user to that user, else set user to null
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-  const searchString = localStorage.getItem('searchString');
 
   useEffect(() => {
     if (!token) {
@@ -71,8 +66,7 @@ export const MainView = () => {
       <NavBar
         user={user}
         onLoggedOut={() => {
-          localStorage.removeItem('user');
-          localStorage.removeItem('token');
+          localStorage.clear();
           setUser(null);
           setToken(null);
         }}
@@ -111,9 +105,28 @@ export const MainView = () => {
                 ) : (
                   <Row className="justify-content-md-center py-5">
                     <Col md={8} className="mb-5">
-                      <MovieView movies={movies} />
+                      <MovieView
+                        movies={movies}
+                        username={user}
+                        favoriteMovies={user.FavoriteMovies}
+                      />
                     </Col>
                   </Row>
+                )}
+              </>
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col>
+                    <ProfileView user={user} movies={movies} />
+                  </Col>
                 )}
               </>
             }
@@ -138,11 +151,6 @@ export const MainView = () => {
                 )}
               </>
             }
-          />
-
-          <Route
-            path="/profile"
-            element={<>{!user ? <ProfileView /> : <Navigate to="/login" />}</>}
           />
         </Routes>
       </Container>
