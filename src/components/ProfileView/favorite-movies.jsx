@@ -1,22 +1,28 @@
 import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { MovieCard } from '../MovieCard/movie-card';
 
-export const FavoriteMovies = ({ favoriteMovieList }) => {
+export const FavoriteMovies = ({ updateUserInfo, movies, user }) => {
+  const favoriteMovies = movies.filter((movie) =>
+    user?.favoriteMovies?.includes(movie._id)
+  );
+
   return (
-    <div>
+    <Row className="justify-content-md">
       <h2>Favorite Movies</h2>
-      {favoriteMovieList.map((movies) => {
-        return (
-          <div key={movies._id}>
-            <img src={movies.ImagePath} />
-            <Link to={`/movies/${movies._id}`}>
-              <h4>{movies.Title}</h4>
-            </Link>
-            <Button onClick={() => handleRemove(movies._id)}>
-              Remove from list
-            </Button>
-          </div>
-        );
-      })}
-    </div>
+      {favoriteMovies.length ? (
+        favoriteMovies.map((movie) => (
+          <Col className="mb-5" key={movie._id} md={3}>
+            <MovieCard
+              movie={movie}
+              updateUserInfo={updateUserInfo}
+              user={user}
+            />
+          </Col>
+        ))
+      ) : (
+        <p>You have no favorite movies yet!</p>
+      )}
+    </Row>
   );
 };

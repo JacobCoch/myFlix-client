@@ -16,6 +16,7 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null); // if there is a user in local storage, set user to that user, else set user to null
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(() => {
     if (!token) {
@@ -27,39 +28,19 @@ export const MainView = () => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Something went wrong');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        const movies = data.map((movie) => ({
-          _id: movie._id,
-          Title: movie.Title,
-          Year: movie.Year,
-          Description: movie.Description,
-          Rating: movie.Rating,
-          Director: {
-            Name: movie.Director.Name,
-            Bio: movie.Director.Bio,
-          },
-          Genre: {
-            Name: movie.Genre.Name,
-            Description: movie.Genre.Description,
-          },
-          Actors: movie.Actors,
-          ImagePath: movie.ImagePath,
-          Featured: movie.Featured,
-        }));
+      .then((res) => res.json())
+      .then((movies) => {
         setMovies(movies);
-        localStorage.setItem('movies', JSON.stringify(movies));
       })
       .catch((err) => {
-        console.error('Error fetching movies: ', err);
-        console.log(movies);
+        console.error(err);
       });
   }, [token]);
+
+  const updateUserInfo = (user) => {
+    setUser(user);
+    localStorage.setItem('user', JSON.stringify(user));
+  };
 
   return (
     <BrowserRouter>
@@ -88,7 +69,12 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <LoginView onLoggedIn={(user) => setUser(user)} />
+                  <LoginView
+                    onLoggedIn={(user, token) => {
+                      setUser(user);
+                      setToken(token);
+                    }}
+                  />
                 )}
               </>
             }
@@ -107,8 +93,8 @@ export const MainView = () => {
                     <Col md={8} className="mb-5">
                       <MovieView
                         movies={movies}
-                        username={user}
-                        favoriteMovies={user.FavoriteMovies}
+                        user={user}
+                        updateUserInfo={updateUserInfo}
                       />
                     </Col>
                   </Row>
@@ -125,7 +111,11 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col>
-                    <ProfileView user={user} movies={movies} />
+                    <ProfileView
+                      user={user}
+                      movies={movies}
+                      updateUserInfo={updateUserInfo}
+                    />
                   </Col>
                 )}
               </>
