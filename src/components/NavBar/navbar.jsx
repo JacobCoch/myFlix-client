@@ -1,9 +1,20 @@
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-export const NavBar = ({ user, onLoggedOut }) => {
+export const NavBar = () => {
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+
+  const onLoggedOut = () => {
+    dispatch(setUser(null));
+    dispatch(setToken(null));
+    localStorage.clear();
+  };
+
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar collapseOnSelect bg="light" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">
           MyFlix

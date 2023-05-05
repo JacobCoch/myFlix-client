@@ -2,10 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-export const UpdateUser = ({ updateUserInfo }) => {
-  const storedUser = JSON.parse(localStorage.getItem('user'));
+export const UpdateUser = ({ updateUserInfo, user }) => {
+  console.log(user.Username);
   const storedToken = localStorage.getItem('token');
-
+  console.log(user);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -23,7 +23,7 @@ export const UpdateUser = ({ updateUserInfo }) => {
 
     try {
       const response = await fetch(
-        `https://myflixdb.herokuapp.com/users/${storedUser.Username}`,
+        `https://mymovieapidb.herokuapp.com/users/${user.Username}`,
         {
           method: 'PUT',
           headers: {
@@ -34,17 +34,18 @@ export const UpdateUser = ({ updateUserInfo }) => {
         }
       );
 
-      const user = await response.json();
+      const updatedUser = await response.json();
 
-      if (user) {
+      if (updatedUser) {
         // update user info
-        updateUserInfo(user);
+        updateUserInfo(updatedUser);
       }
 
-      console.log(user);
+      console.log(updatedUser);
       alert("You've successfully updated your user information.");
     } catch (error) {
       console.log('Error updating user info: ', error);
+
       alert(error);
     }
   };

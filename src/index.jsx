@@ -1,5 +1,10 @@
 import { createRoot } from 'react-dom/client';
+
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
+
 import { MainView } from './components/MainView/main-view.jsx';
+
 import Container from 'react-bootstrap/Container';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,9 +13,9 @@ import './index.scss';
 
 const App = () => {
   return (
-    <Container style={{ border: '1px solid red' }}>
+    <Provider store={store}>
       <MainView />
-    </Container>
+    </Provider>
   );
 };
 

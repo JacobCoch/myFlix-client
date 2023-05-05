@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import {
+  Button,
+  Form,
+  Card,
+  CardGroup,
+  Container,
+  Col,
+  Row,
+} from 'react-bootstrap';
+import './login-view.scss';
 
-export const LoginView = ({ onLoggedIn }) => {
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/reducers/user';
+import { setToken } from '../../redux/reducers/token';
+
+export const LoginView = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Send a request to the server for authentication
     const data = {
       Username: username,
       Password: password,
@@ -21,23 +35,19 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => {
-        if (response.ok) {
-          onLoggedIn(username);
-          return response.json();
-        } else {
-          alert('Incorrect username or password');
-        }
-      })
+      .then((response) => response.json())
       .then((data) => {
-        console.log('Login response: ', data);
+        console.log({ data, setToken: setToken(data.token) });
         if (data.user) {
           localStorage.setItem('user', JSON.stringify(data.user));
           localStorage.setItem('token', data.token);
+          dispatch(setUser(data.user));
+          dispatch(setToken(data.token));
         } else {
-          alert('No such user');
+          alert('Username or password is incorrect');
         }
       })
+
       .catch((e) => {
         alert('Something went wrong');
         console.error('Login error: ', e);
@@ -45,36 +55,51 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formBasicUsername">
-        <Form.Label>Username</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          minLength={5}
-          name="username"
-        />
-      </Form.Group>
-
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          value={password}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-          minLength={5}
-          name="password"
-        />
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+    <Container>
+      <Row>
+        <Col>
+          <CardGroup>
+            <Card className="border-0">
+              <Card.Body>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group controlId="formUsername" className="mt-2">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      required
+                      minLength="3"
+                      pattern="^[A-Za-z0-9 .,'\-!?%&]+$"
+                      title="Username should contain more than 3 characters, may only contain letters, numbers and special characters: .,'-!?%&"
+                      placeholder="Enter your name"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formPassword" className="mt-3">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      pattern="^[A-Za-z0-9 .,'\-!?%&]+$"
+                      title="Password may only contain letters, numbers and special characters: .,'-!?%&"
+                      placeholder="Enter your password"
+                    />
+                  </Form.Group>
+                  <Row>
+                    <Col className="text-end">
+                      <Button variant="primary" type="submit" className="mt-3">
+                        Submit
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
+    </Container>
   );
 };

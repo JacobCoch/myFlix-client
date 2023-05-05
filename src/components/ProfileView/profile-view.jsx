@@ -10,6 +10,7 @@ import './profile-view.scss';
 import { UpdateUser } from './update-user';
 
 export const ProfileView = ({ user, updateUserInfo, movies }) => {
+  console.log(user);
   return (
     <div>
       <h1>Profile</h1>
@@ -21,7 +22,7 @@ export const ProfileView = ({ user, updateUserInfo, movies }) => {
         user={user}
       />
       <br />
-      <UpdateUser updateUserInfo={updateUserInfo} />
+      <UpdateUser updateUserInfo={updateUserInfo} user={user} />
     </div>
   );
 };
