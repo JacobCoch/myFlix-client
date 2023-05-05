@@ -1,0 +1,53 @@
+.auth-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+
+  .auth-left {
+    flex: 1;
+    padding: 1rem;
+    background-color: salmon;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  .auth-right {
+    flex: 1;
+    padding: 1rem;
+    background-color: grey;
+  }
+
+  button {
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #0062cc;
+    }
+  }
+
+  &.signup-active {
+    .auth-left {
+      h2 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

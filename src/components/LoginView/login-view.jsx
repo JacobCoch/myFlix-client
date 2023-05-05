@@ -13,10 +13,12 @@ import './login-view.scss';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/reducers/user';
 import { setToken } from '../../redux/reducers/token';
+import { setView } from '../../redux/reducers/view';
 
 export const LoginView = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -43,6 +45,7 @@ export const LoginView = () => {
           localStorage.setItem('token', data.token);
           dispatch(setUser(data.user));
           dispatch(setToken(data.token));
+          dispatch(setView('movies'));
         } else {
           alert('Username or password is incorrect');
         }

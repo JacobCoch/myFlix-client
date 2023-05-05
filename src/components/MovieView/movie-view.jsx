@@ -29,7 +29,7 @@ export const MovieView = () => {
           <Row className="d-flex flex-row-reverse p-3">
             <Col md={5} className="text-center text-md-end">
               <img
-                src={movieId.imagePath}
+                src={movie.imagePath}
                 alt={`Poster for ${movie.Title}`}
                 className="img-fluid h-100 w-auto movie-view-img"
               />

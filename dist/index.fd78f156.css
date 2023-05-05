@@ -8,7 +8,55 @@
 
 
 
+.auth-container {
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+  display: flex;
+}
 
+.auth-container .auth-left {
+  background-color: salmon;
+  flex: 1;
+  padding: 1rem;
+}
+
+.auth-container .auth-left h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.auth-container .auth-left p {
+  font-size: 1.2rem;
+}
+
+.auth-container .auth-right {
+  background-color: gray;
+  flex: 1;
+  padding: 1rem;
+}
+
+.auth-container button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  padding: .5rem 1rem;
+  font-size: 1.2rem;
+  transition: background-color .2s ease-in-out;
+}
+
+.auth-container button:hover {
+  background-color: #0062cc;
+}
+
+.auth-container.signup-active .auth-left h2 {
+  font-size: 3rem;
+}
+
+.auth-container.signup-active .auth-left p {
+  font-size: 1.5rem;
+}
 
 
 
