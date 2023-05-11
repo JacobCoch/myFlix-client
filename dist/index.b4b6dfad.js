@@ -53004,7 +53004,7 @@ var _reactBootstrap = require("react-bootstrap");
 var _movieCard = require("../MovieCard/movie-card");
 var _movieViewScss = require("./movie-view.scss");
 var _s = $RefreshSig$();
-const MovieView = ()=>{
+const MovieView = (props)=>{
     _s();
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.movies);
     const { movieId  } = (0, _reactRouterDom.useParams)(); // useParams is a hook that allows us to access the URL parameters
