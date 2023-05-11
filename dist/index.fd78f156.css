@@ -16,7 +16,6 @@
 }
 
 .auth-container .auth-left {
-  background-color: salmon;
   flex: 1;
   padding: 1rem;
 }
@@ -31,9 +30,17 @@
 }
 
 .auth-container .auth-right {
-  background-color: gray;
   flex: 1;
   padding: 1rem;
+}
+
+.auth-container .auth-right h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.auth-container .auth-right p {
+  font-size: 1.2rem;
 }
 
 .auth-container button {
@@ -56,6 +63,18 @@
 
 .auth-container.signup-active .auth-left p {
   font-size: 1.5rem;
+}
+
+.auth-container.auth-container-reverse {
+  flex-direction: row-reverse;
+}
+
+.auth-container.auth-container-reverse .auth-left {
+  order: 2;
+}
+
+.auth-container.auth-container-reverse .auth-right {
+  order: 1;
 }
 
 

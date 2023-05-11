@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { MovieCard } from '../MovieCard/movie-card.jsx';
 import Col from 'react-bootstrap/Col';
@@ -31,7 +31,7 @@ export const MoviesList = () => {
                 sm={6}
                 md={4}
                 lg={3}>
-                <MovieCard movieData={movie} />
+                <MovieCard movie={movie} />
               </Col>
             )
           )

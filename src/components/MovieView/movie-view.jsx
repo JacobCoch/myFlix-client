@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -7,16 +6,22 @@ import { Button, Col, Row } from 'react-bootstrap';
 import { MovieCard } from '../MovieCard/movie-card';
 import './movie-view.scss';
 
-export const MovieView = () => {
+export const MovieView = (props) => {
   const movies = useSelector((state) => state.movies.movies);
 
   const { movieId } = useParams(); // useParams is a hook that allows us to access the URL parameters
-  const movie = movies.find((movie) => movie._id === movieId);
+  const movie = movies.find((m) => m._id === movieId);
 
   const similarMovies = movies.filter((filteredMovie) => {
+    console.log(filteredMovie);
+
+    console.log(movie);
+    console.log(movie.genre);
+
     return (
-      filteredMovie.Genre.Name === movie.Genre.Name &&
-      filteredMovie.Title !== movie.Title
+      filteredMovie.genre.name === movie.genre.name &&
+      filteredMovie._id !== movie._id &&
+      filteredMovie.ImagePath !== movie.ImagePath
     );
   });
 
@@ -29,7 +34,7 @@ export const MovieView = () => {
           <Row className="d-flex flex-row-reverse p-3">
             <Col md={5} className="text-center text-md-end">
               <img
-                src={movie.imagePath}
+                src={movie.ImagePath}
                 alt={`Poster for ${movie.Title}`}
                 className="img-fluid h-100 w-auto movie-view-img"
               />
@@ -83,7 +88,7 @@ export const MovieView = () => {
                 sm={6}
                 md={4}
                 lg={3}>
-                <MovieCard movieData={movie} />
+                <MovieCard movie={movie} />
               </Col>
             ))}
           </Row>

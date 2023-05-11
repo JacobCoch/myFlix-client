@@ -13,7 +13,6 @@ import './login-view.scss';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/reducers/user';
 import { setToken } from '../../redux/reducers/token';
-import { setView } from '../../redux/reducers/view';
 
 export const LoginView = () => {
   const [username, setUsername] = useState('');
@@ -39,13 +38,11 @@ export const LoginView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log({ data, setToken: setToken(data.token) });
         if (data.user) {
           localStorage.setItem('user', JSON.stringify(data.user));
           localStorage.setItem('token', data.token);
           dispatch(setUser(data.user));
           dispatch(setToken(data.token));
-          dispatch(setView('movies'));
         } else {
           alert('Username or password is incorrect');
         }

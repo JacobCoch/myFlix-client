@@ -2,6 +2,10 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setUser } from '../../redux/reducers/user';
+import { setToken } from '../../redux/reducers/token';
+
+import { MoviesFilter } from '../MoviesFilter/movies-filter';
 
 export const NavBar = () => {
   const user = useSelector((state) => state.user.user);
@@ -14,7 +18,13 @@ export const NavBar = () => {
   };
 
   return (
-    <Navbar collapseOnSelect bg="light" expand="lg">
+    <Navbar
+      collapseOnSelect
+      bg="light"
+      expand="md"
+      variant="light"
+      sticky="top"
+      className="mb-4 py-3">
       <Container>
         <Navbar.Brand as={Link} to="/">
           MyFlix

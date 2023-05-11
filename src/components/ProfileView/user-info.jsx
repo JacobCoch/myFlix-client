@@ -1,6 +1,7 @@
 import { Card } from 'react-bootstrap';
 
 export const UserInfo = ({ user }) => {
+  console.log(user);
   return (
     <>
       <h1>User Info</h1>

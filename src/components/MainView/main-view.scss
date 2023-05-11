@@ -7,13 +7,10 @@
   .auth-left {
     flex: 1;
     padding: 1rem;
-    background-color: salmon;
-
     h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
     }
-
     p {
       font-size: 1.2rem;
     }
@@ -22,7 +19,13 @@
   .auth-right {
     flex: 1;
     padding: 1rem;
-    background-color: grey;
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
   }
 
   button {
@@ -48,6 +51,18 @@
       p {
         font-size: 1.5rem;
       }
+    }
+  }
+
+  &.auth-container-reverse {
+    flex-direction: row-reverse;
+
+    .auth-left {
+      order: 2;
+    }
+
+    .auth-right {
+      order: 1;
     }
   }
 }
