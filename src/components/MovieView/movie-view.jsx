@@ -6,22 +6,21 @@ import { Button, Col, Row } from 'react-bootstrap';
 import { MovieCard } from '../MovieCard/movie-card';
 import './movie-view.scss';
 
-export const MovieView = (props) => {
+export const MovieView = () => {
   const movies = useSelector((state) => state.movies.movies);
 
   const { movieId } = useParams(); // useParams is a hook that allows us to access the URL parameters
-  const movie = movies.find((m) => m._id === movieId);
 
-  const similarMovies = movies.filter((filteredMovie) => {
-    console.log(filteredMovie);
+  const movie = movies.find((movie) => movie._id === movieId);
 
-    console.log(movie);
-    console.log(movie.genre);
+  console.log(movieId);
+  console.log(movie);
+  console.log(movies);
 
+  let similarMovies = movies.filter((filteredMovie) => {
     return (
-      filteredMovie.genre.name === movie.genre.name &&
-      filteredMovie._id !== movie._id &&
-      filteredMovie.ImagePath !== movie.ImagePath
+      filteredMovie.Genre.Name === movie.Genre.Name &&
+      filteredMovie.Title !== movie.Title
     );
   });
 
