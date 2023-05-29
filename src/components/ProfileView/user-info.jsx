@@ -1,21 +1,27 @@
-import { Card } from 'react-bootstrap';
+import React from 'react';
+import { Row, Col } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
-export const UserInfo = ({ user }) => {
-  console.log(user);
+import moment from 'moment';
+
+export const UserInfo = () => {
+  const user = useSelector((state) => state.user.user);
+  let userBirthday = moment(user.Birthday).format('DD-MM-YYYY');
+
   return (
-    <>
-      <h1>User Info</h1>
-      <Card className="user-info-card">
-        <Card.Body>
-          <Card.Title>Current User Info</Card.Title>
-          <Card.Text>
-            <span>Your name: {user.Username}</span>
-            <br />
-            <span>Your email: {user.Email}</span>
-            <br />
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </>
+    <Row className="d-flex flex-column flex-lg-row ms-2 text-lg-center mt-lg-3 mt-3">
+      <Col>
+        <span>Username: </span>
+        <span className="fw-bolder">{user.Username}</span>
+      </Col>
+      <Col>
+        <span>Email: </span>
+        <span className="fw-bolder">{user.Email}</span>
+      </Col>
+      <Col>
+        <span>Birthday: </span>
+        <span className="fw-bolder">{userBirthday}</span>
+      </Col>
+    </Row>
   );
 };

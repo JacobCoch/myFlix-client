@@ -1,68 +1,10 @@
-.auth-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 2rem 0;
+.movie-cards {
+  background-color: #5e5e5e;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
 
-  .auth-left {
-    flex: 1;
-    padding: 1rem;
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: 1.2rem;
-    }
-  }
-
-  .auth-right {
-    flex: 1;
-    padding: 1rem;
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: 1.2rem;
-    }
-  }
-
-  button {
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-
-    &:hover {
-      background-color: #0062cc;
-    }
-  }
-
-  &.signup-active {
-    .auth-left {
-      h2 {
-        font-size: 3rem;
-      }
-
-      p {
-        font-size: 1.5rem;
-      }
-    }
-  }
-
-  &.auth-container-reverse {
-    flex-direction: row-reverse;
-
-    .auth-left {
-      order: 2;
-    }
-
-    .auth-right {
-      order: 1;
-    }
-  }
+.movie-card-btn {
+  background-color: #dcb482;
 }

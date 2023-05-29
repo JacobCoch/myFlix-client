@@ -5,8 +5,6 @@ import { Provider } from 'react-redux';
 
 import { MainView } from './components/MainView/main-view.jsx';
 
-import Container from 'react-bootstrap/Container';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.scss';

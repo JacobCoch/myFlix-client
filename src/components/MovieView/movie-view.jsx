@@ -4,23 +4,19 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Col, Row } from 'react-bootstrap';
 import { MovieCard } from '../MovieCard/movie-card';
-import './movie-view.scss';
 
 export const MovieView = () => {
   const movies = useSelector((state) => state.movies.movies);
 
   const { movieId } = useParams(); // useParams is a hook that allows us to access the URL parameters
 
-  const movie = movies.find((movie) => movie._id === movieId);
-
-  console.log(movieId);
+  const movie = movies.find((m) => m.id === movieId);
   console.log(movie);
-  console.log(movies);
 
   let similarMovies = movies.filter((filteredMovie) => {
     return (
-      filteredMovie.Genre.Name === movie.Genre.Name &&
-      filteredMovie.Title !== movie.Title
+      filteredMovie.genre.name === movie.genre.name &&
+      filteredMovie.title !== movie.title
     );
   });
 

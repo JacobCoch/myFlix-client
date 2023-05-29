@@ -20,7 +20,7 @@ export const NavBar = () => {
   return (
     <Navbar
       collapseOnSelect
-      bg="light"
+      bg="#5E5E5E"
       expand="md"
       variant="light"
       sticky="top"

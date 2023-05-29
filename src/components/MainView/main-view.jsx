@@ -29,6 +29,7 @@ export const MainView = () => {
 
     const getUser = () => {
       const username = JSON.parse(localStorage.getItem('user')).Username;
+      console.log(username);
       fetch(`https://mymovieapidb.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -81,7 +82,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <NavBar />
-      <Container>
+      <Container className="movie-cards">
         <Row className="justify-content-md-center">
           <Routes>
             <Route
@@ -150,6 +151,23 @@ export const MainView = () => {
               path="/"
               element={
                 <>{!user ? <Navigate to="/login" replace /> : <MoviesList />}</>
+              }
+            />
+
+            <Route
+              path="/profile"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <Col>The list is empty</Col>
+                  ) : (
+                    <Col>
+                      <ProfileView />
+                    </Col>
+                  )}
+                </>
               }
             />
           </Routes>

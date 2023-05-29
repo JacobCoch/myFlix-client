@@ -6,7 +6,7 @@ import { Card, Button, Row, Col } from 'react-bootstrap';
 
 export const MovieCard = ({ movie }) => {
   return (
-    <Card className="h-100">
+    <Card className="movie-cards h-100">
       <Row className="h-50">
         <Col className="h-100 text-center mt-3">
           <Card.Img
@@ -27,7 +27,11 @@ export const MovieCard = ({ movie }) => {
           <Col className="text-end">
             <Link to={`/movies/${movie.Title}`}>
               {' '}
-              <Button className="mt-auto" variant="secondary" size="sm">
+              <Button
+                className="mt-auto"
+                bg="#DCB482"
+                variant="secondary"
+                size="sm">
                 Details
               </Button>
             </Link>
