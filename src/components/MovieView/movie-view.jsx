@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Col, Row } from 'react-bootstrap';
+
+import { FavoriteIcon } from '../FavoriteIcon/favorite-icon';
 import { MovieCard } from '../MovieCard/movie-card';
 
 export const MovieView = () => {
@@ -10,13 +12,13 @@ export const MovieView = () => {
 
   const { movieId } = useParams(); // useParams is a hook that allows us to access the URL parameters
 
-  const movie = movies.find((m) => m.id === movieId);
-  console.log(movie);
+  const movie = movies.find((m) => m.Title === movieId);
 
   let similarMovies = movies.filter((filteredMovie) => {
     return (
-      filteredMovie.genre.name === movie.genre.name &&
-      filteredMovie.title !== movie.title
+      filteredMovie.Genre &&
+      filteredMovie.Genre.Name === movie?.Genre?.Name && // Access Genre.Name with optional chaining
+      filteredMovie.Title !== movie?.Title // Access Title with optional chaining
     );
   });
 
@@ -26,7 +28,7 @@ export const MovieView = () => {
         <Col>The list is empty</Col>
       ) : (
         <>
-          <Row className="d-flex flex-row-reverse p-3">
+          <Row className="d-flex flex-row-reverse p-3" id="movie-details-view">
             <Col md={5} className="text-center text-md-end">
               <img
                 src={movie.ImagePath}
@@ -41,7 +43,7 @@ export const MovieView = () => {
                     <span>Title: </span>
                     <span>{movie.Title}</span>
                   </h3>
-                  <h5 className="mt-1 text-left text-muted">
+                  <h5 className="mt-1 text-left">
                     <span>Director: </span>
                     <span>{movie.Director.Name}</span>
                   </h5>
@@ -53,18 +55,16 @@ export const MovieView = () => {
                 </Col>
               </Row>
               <div className="mt-md-5 mb-4">
-                <div className="text-decoration-underline mb-2">
-                  Description:{' '}
-                </div>
+                <div className=" mb-2">Description:</div>
                 <span>{movie.Description}</span>
               </div>
               <Row className="d-flex flex-row justify-content-between mt-auto mb-md-4">
-                {/* <Col className="text-start">
+                <Col className="text-start">
                   <FavoriteIcon movie={movie} />
-                </Col> */}
+                </Col>
                 <Col className="text-end">
                   <Link to={`/`}>
-                    <Button variant="secondary" size="lg">
+                    <Button variant="secondary" size="lg" id="card-button">
                       Back
                     </Button>
                   </Link>
