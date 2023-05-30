@@ -1,10 +1,51 @@
-.movie-cards {
+// Login View & Signup View
+.login-signup-container {
   background-color: #5e5e5e;
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 10px;
 }
 
-.movie-card-btn {
+// Navbar
+.logout-nav {
+  margin-left: 50rem;
+}
+
+.navbar {
+  background-color: white;
+}
+
+// Movie Card
+#card-button {
   background-color: #dcb482;
+  outline: auto;
+}
+#card-button:hover {
+  background-color: #dcb482;
+  outline: auto;
+  opacity: 0.8;
+}
+
+.movie-card-img {
+  border-radius: 10px;
+  max-height: 90%;
+}
+
+#card-text {
+  color: white;
+}
+
+#card-container {
+  background-color: #5e5e5e;
+}
+
+// Movie View
+#movie-details-view {
+  background-color: #5e5e5e;
+  color: white;
+  border-radius: 10px;
+}
+
+.movie-view-img {
+  border-radius: 10px;
 }
