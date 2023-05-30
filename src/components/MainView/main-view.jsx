@@ -10,7 +10,7 @@ import { NavBar } from '../NavBar/navbar.jsx';
 import { MoviesList } from '../MoviesList/movies-list.jsx';
 import { ProfileView } from '../ProfileView/profile-view.jsx';
 import { MovieView } from '../MovieView/movie-view';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Routes, BrowserRouter, Route, Navigate } from 'react-router-dom';
 
 import './main-view.scss';
@@ -29,7 +29,7 @@ export const MainView = () => {
 
     const getUser = () => {
       const username = JSON.parse(localStorage.getItem('user')).Username;
-      console.log(username);
+
       fetch(`https://mymovieapidb.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -82,7 +82,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <NavBar />
-      <Container className="movie-cards">
+      <Container>
         <Row className="justify-content-md-center">
           <Routes>
             <Route
