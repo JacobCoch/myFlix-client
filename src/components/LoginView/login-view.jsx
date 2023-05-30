@@ -54,7 +54,7 @@ export const LoginView = () => {
   };
 
   return (
-    <Container>
+    <Container className="login-signup-container">
       <Row>
         <Col>
           <CardGroup>
@@ -62,7 +62,7 @@ export const LoginView = () => {
               <Card.Body>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="formUsername" className="mt-2">
-                    <Form.Label>Username:</Form.Label>
+                    <Form.Label>Username </Form.Label>
                     <Form.Control
                       type="text"
                       value={username}
@@ -75,7 +75,7 @@ export const LoginView = () => {
                     />
                   </Form.Group>
                   <Form.Group controlId="formPassword" className="mt-3">
-                    <Form.Label>Password:</Form.Label>
+                    <Form.Label>Password </Form.Label>
                     <Form.Control
                       type="password"
                       value={password}
