@@ -1,10 +1,23 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { MovieCard } from '../MovieCard/movie-card';
+import { useSelector } from 'react-redux';
 
-export const FavoriteMovies = ({ updateUserInfo, movies, user }) => {
-  const favoriteMovies = movies.filter((movie) =>
-    user?.favoriteMovies?.includes(movie._id)
+export const FavoriteMovies = () => {
+  const user = useSelector((state) => state.user.user);
+  const movies = useSelector((state) => state.movies.movies);
+
+  let favoriteMovies = [];
+  if (user && user.FavoriteMovies) {
+    favoriteMovies = movies.filter((m) => user.FavoriteMovies.includes(m._id));
+  }
+
+  const filter = useSelector((state) => state.movies.filter)
+    .trim()
+    .toLowerCase();
+
+  const filteredMovies = favoriteMovies.filter((m) =>
+    m.Title.toLowerCase().includes(filter)
   );
 
   return (

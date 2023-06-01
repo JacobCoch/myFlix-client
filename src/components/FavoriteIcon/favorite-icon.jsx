@@ -13,10 +13,9 @@ export const FavoriteIcon = ({ movie }) => {
   const dispatch = useDispatch();
 
   const alreadyFavorite = user?.FavoriteMovies?.find(
-    (favMovieId) => favMovieId === movie.id
+    (favMovieId) => favMovieId === movie._id
   );
 
-  //! POST says it is adding to the list of favs, but there is an error in the console
   const toggleFavorite = () => {
     if (!token) return;
 
@@ -59,10 +58,10 @@ export const FavoriteIcon = ({ movie }) => {
 
   return (
     <Link
-      onClick={() => toggleFavorite()}
-      className="favorite-icon"
+      onClick={toggleFavorite}
+      className={iconClassName}
       id="favMovieButton">
-      {alreadyFavorite ? <FaHeart className="favorite-movie" /> : <FaHeart />}
+      <FaHeart />
     </Link>
   );
 };
