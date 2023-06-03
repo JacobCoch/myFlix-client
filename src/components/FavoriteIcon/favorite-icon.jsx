@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react'; // Import useState
 import { FaHeart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -8,13 +8,13 @@ import { setToken } from '../../redux/reducers/token';
 
 export const FavoriteIcon = ({ movie }) => {
   const user = useSelector((state) => state.user.user);
-  const token = useSelector((state) => state.token.token);
+  const token = localStorage.getItem('token');
 
   const dispatch = useDispatch();
 
-  const alreadyFavorite = user?.FavoriteMovies?.find(
-    (favMovieId) => favMovieId === movie._id
-  );
+  const alreadyFavorite = user?.FavoriteMovies?.includes(movie._id);
+
+  const [iconClassName, setIconClassName] = useState('favorite-icon'); // Declare iconClassName with useState
 
   const toggleFavorite = () => {
     if (!token) return;
@@ -33,13 +33,11 @@ export const FavoriteIcon = ({ movie }) => {
     if (alreadyFavorite) {
       requestOptions.method = 'DELETE';
       resultAlert = `${movie.Title} is deleted from the list of favorites`;
-      iconChange = () =>
-        document.querySelector('svg').classList.remove('favorite-movie');
+      setIconClassName('favorite-icon'); // Update iconClassName using setIconClassName
     } else {
       requestOptions.method = 'POST';
       resultAlert = `${movie.Title} is added to the list of favorites`;
-      iconChange = () =>
-        document.querySelector('svg').classList.add('favorite-movie');
+      setIconClassName('favorite-icon favorite-movie'); // Update iconClassName using setIconClassName
     }
 
     fetch(url, requestOptions)
