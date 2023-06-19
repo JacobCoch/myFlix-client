@@ -1,11 +1,9 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Button, Col, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 
-import { FavoriteIcon } from '../FavoriteIcon/favorite-icon';
-import { MovieCard } from '../MovieCard/movie-card';
+import { FavoriteIcon } from '../FavoriteIcon/FavoriteIcon';
+import { MovieCard } from '../MovieCard/MovieCard';
 
 export const MovieView = () => {
   const movies = useSelector((state) => state.movies.movies);

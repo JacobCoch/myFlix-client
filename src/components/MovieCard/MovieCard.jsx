@@ -1,9 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { Card, Button, Row, Col } from 'react-bootstrap';
-import { FavoriteIcon } from '../FavoriteIcon/favorite-icon';
+import { Button, Card, Col, Row } from 'react-bootstrap';
+import { FavoriteIcon } from '../FavoriteIcon/FavoriteIcon';
 
 export const MovieCard = ({ movie }) => {
   return (

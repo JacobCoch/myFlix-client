@@ -1,11 +1,10 @@
-import { Navbar, Container, Nav, Col } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { Col, Container, Nav, Navbar } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setUser } from '../../redux/reducers/user';
 import { setToken } from '../../redux/reducers/token';
+import { setUser } from '../../redux/reducers/user';
 
-import { MoviesFilter } from '../MoviesFilter/movies-filter';
+import { MoviesFilter } from '../MoviesFilter/MoviesFilter';
 
 export const NavBar = () => {
   const user = useSelector((state) => state.user.user);

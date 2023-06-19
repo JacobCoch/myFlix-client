@@ -1,10 +1,9 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { UserInfo } from './user-info';
-import { FavoriteMovies } from './favorite-movies';
-import { UpdateUser } from './update-user';
-import { DeleteUser } from './delete-user';
+import { DeleteUser } from './DeleteUser';
+import { FavoriteMovies } from './FavoriteMovie';
+import { UpdateUser } from './UpdateUser';
+import { UserInfo } from './UserInfo';
 
 export const ProfileView = () => {
   const movies = useSelector((state) => state.movies.movies);

@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { MovieCard } from '../MovieCard/movie-card';
+import { MovieCard } from '../MovieCard/MovieCard';
 
 export const FavoriteMovies = () => {
   const user = useSelector((state) => state.user.user);

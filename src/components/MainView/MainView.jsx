@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { setMovies } from '../../redux/reducers/movies';
 import { setUser } from '../../redux/reducers/user';
 
-import { LoginView } from '../LoginView/login-view.jsx';
-import { SignupView } from '../SignupView/signup-view.jsx';
-import { NavBar } from '../NavBar/navbar.jsx';
-import { MoviesList } from '../MoviesList/movies-list.jsx';
-import { ProfileView } from '../ProfileView/profile-view.jsx';
-import { MovieView } from '../MovieView/movie-view';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Routes, BrowserRouter, Route, Navigate } from 'react-router-dom';
+import { Col, Container, Row } from 'react-bootstrap';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { LoginView } from '../LoginView/LoginView.jsx';
+import { MoviesList } from '../MoviesList/MoviesList.jsx';
+import { MovieView } from '../MovieView/MovieView'; //? why no .jsx
+import { NavBar } from '../NavBar/NavBar.jsx';
+import { ProfileView } from '../ProfileView/ProfileView.jsx';
+import { SignupView } from '../SignupView/SignupView';
 
 import './main-view.scss';
 

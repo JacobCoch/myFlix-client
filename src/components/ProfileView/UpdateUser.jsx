@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Button, Form, Row, Col, CardGroup, Card } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { Button, Card, CardGroup, Col, Form, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../redux/reducers/user';
 
 import moment from 'moment';

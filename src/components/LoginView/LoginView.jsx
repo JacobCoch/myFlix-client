@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Button,
-  Form,
   Card,
   CardGroup,
-  Container,
   Col,
+  Container,
+  Form,
   Row,
 } from 'react-bootstrap';
 
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../redux/reducers/user';
 import { setToken } from '../../redux/reducers/token';
+import { setUser } from '../../redux/reducers/user';
 
 export const LoginView = () => {
   const [username, setUsername] = useState('');

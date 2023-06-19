@@ -11,7 +11,7 @@ export const FavoriteIcon = ({ movie }) => {
 
   const dispatch = useDispatch();
 
-  const alreadyFavorite = user?.FavoriteMovies?.includes(movie.Title);
+  const alreadyFavorite = user?.FavoriteMovies?.includes(movie._id);
 
   const [iconClassName, setIconClassName] = useState('favorite-icon'); // Declare iconClassName with useState
 
