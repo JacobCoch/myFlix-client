@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react'; // Import useState
+import { useState } from 'react'; // Import useState
 import { FaHeart } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { setUser } from '../../redux/reducers/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setToken } from '../../redux/reducers/token';
+import { setUser } from '../../redux/reducers/user';
 
 export const FavoriteIcon = ({ movie }) => {
   const user = useSelector((state) => state.user.user);
@@ -12,7 +11,7 @@ export const FavoriteIcon = ({ movie }) => {
 
   const dispatch = useDispatch();
 
-  const alreadyFavorite = user?.FavoriteMovies?.includes(movie._id);
+  const alreadyFavorite = user?.FavoriteMovies?.includes(movie.Title);
 
   const [iconClassName, setIconClassName] = useState('favorite-icon'); // Declare iconClassName with useState
 

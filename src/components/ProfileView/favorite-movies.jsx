@@ -1,10 +1,7 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
-import { MovieCard } from '../MovieCard/movie-card';
+import { Col, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import { MovieCard } from '../MovieCard/movie-card';
 
-// Need to fetch user after like/dislike movie, so that
-// relevant info user.FavoriteMovies will be displayed on Home page
 export const FavoriteMovies = () => {
   const user = useSelector((state) => state.user.user);
   const movies = useSelector((state) => state.movies.movies);
