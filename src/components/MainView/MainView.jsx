@@ -9,7 +9,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { LoginView } from '../LoginView/LoginView.jsx';
 import { MoviesList } from '../MoviesList/MoviesList.jsx';
 import { MovieView } from '../MovieView/MovieView'; //? why no .jsx
-import { NavBar } from '../NavBar/NavBar.jsx';
+import { NavBar } from '../NavBar/navbar';
 import { ProfileView } from '../ProfileView/ProfileView.jsx';
 import { SignupView } from '../SignupView/SignupView';
 
