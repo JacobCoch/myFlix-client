@@ -6,7 +6,6 @@ export const FavoriteMovies = () => {
   const user = useSelector((state) => state.user.user);
   const movies = useSelector((state) => state.movies.movies);
 
-  console.log(user);
   let favoriteMoviesList = [];
 
   if (user && user.FavoriteMovies) {
@@ -29,10 +28,10 @@ export const FavoriteMovies = () => {
         <Col>The list of favorite movies is empty</Col>
       ) : (
         <>
-          <div className="text-start h2 mb-4">List of favorite movies</div>
+          <div className='text-start h2 mb-4'>List of favorite movies</div>
 
           {filteredMovies.map((movie) => (
-            <Col className="mb-5" key={movie._id} xs={12} sm={6} md={4} lg={3}>
+            <Col className='mb-5' key={movie._id} xs={12} sm={6} md={4} lg={3}>
               <MovieCard movie={movie} />
             </Col>
           ))}

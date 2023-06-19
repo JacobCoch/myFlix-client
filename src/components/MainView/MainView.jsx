@@ -13,7 +13,7 @@ import { NavBar } from '../NavBar/NavBar.jsx';
 import { ProfileView } from '../ProfileView/ProfileView.jsx';
 import { SignupView } from '../SignupView/SignupView';
 
-import './main-view.scss';
+import './MainView.scss';
 
 export const MainView = () => {
   const movies = useSelector((state) => state.movies.movies);
@@ -83,14 +83,14 @@ export const MainView = () => {
     <BrowserRouter>
       <NavBar />
       <Container>
-        <Row className="justify-content-md-center">
+        <Row className='justify-content-md-center'>
           <Routes>
             <Route
-              path="/signup"
+              path='/signup'
               element={
                 <>
                   {user ? (
-                    <Navigate to="/" replace />
+                    <Navigate to='/' replace />
                   ) : (
                     <Col md={5}>
                       <SignupView />
@@ -101,11 +101,11 @@ export const MainView = () => {
             />
 
             <Route
-              path="/login"
+              path='/login'
               element={
                 <>
                   {user ? (
-                    <Navigate to="/" />
+                    <Navigate to='/' />
                   ) : (
                     <Col md={5}>
                       <LoginView />
@@ -116,11 +116,11 @@ export const MainView = () => {
             />
 
             <Route
-              path="/movies/:movieId"
+              path='/movies/:movieId'
               element={
                 <>
                   {!user ? (
-                    <Navigate to="/login" replace /> // replace the current entry in the history stack instead of adding a new one
+                    <Navigate to='/login' replace /> // replace the current entry in the history stack instead of adding a new one
                   ) : (
                     <Col>
                       <MovieView />
@@ -131,11 +131,11 @@ export const MainView = () => {
             />
 
             <Route
-              path="/users/:username"
+              path='/users/:username'
               element={
                 <>
                   {!user ? (
-                    <Navigate to="/login" replace />
+                    <Navigate to='/login' replace />
                   ) : movies.length === 0 ? (
                     <Col>The list is empty</Col>
                   ) : (
@@ -148,18 +148,18 @@ export const MainView = () => {
             />
 
             <Route
-              path="/"
+              path='/'
               element={
-                <>{!user ? <Navigate to="/login" replace /> : <MoviesList />}</>
+                <>{!user ? <Navigate to='/login' replace /> : <MoviesList />}</>
               }
             />
 
             <Route
-              path="/profile"
+              path='/profile'
               element={
                 <>
                   {!user ? (
-                    <Navigate to="/login" replace />
+                    <Navigate to='/login' replace />
                   ) : movies.length === 0 ? (
                     <Col>The list is empty</Col>
                   ) : (
