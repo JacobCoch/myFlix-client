@@ -13,7 +13,7 @@ export const FavoriteIcon = ({ movie }) => {
 
   const alreadyFavorite = user?.FavoriteMovies?.includes(movie._id);
 
-  const [iconClassName, setIconClassName] = useState('favorite-icon'); // Declare iconClassName with useState
+  const [iconClassName, setIconClassName] = useState('favorite-icon');
 
   const toggleFavorite = () => {
     if (!token) return;
@@ -32,11 +32,11 @@ export const FavoriteIcon = ({ movie }) => {
     if (alreadyFavorite) {
       requestOptions.method = 'DELETE';
       resultAlert = `${movie.Title} is deleted from the list of favorites`;
-      setIconClassName('favorite-icon'); // Update iconClassName using setIconClassName
+      setIconClassName('favorite-icon');
     } else {
       requestOptions.method = 'POST';
       resultAlert = `${movie.Title} is added to the list of favorites`;
-      setIconClassName('favorite-icon favorite-movie'); // Update iconClassName using setIconClassName
+      setIconClassName('favorite-icon favorite-movie');
     }
 
     fetch(url, requestOptions)
@@ -57,7 +57,7 @@ export const FavoriteIcon = ({ movie }) => {
     <Link
       onClick={toggleFavorite}
       className={iconClassName}
-      id="favMovieButton">
+      id='favMovieButton'>
       <FaHeart />
     </Link>
   );
