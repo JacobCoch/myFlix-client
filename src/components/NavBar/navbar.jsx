@@ -19,46 +19,46 @@ export const NavBar = () => {
   return (
     <Navbar
       collapseOnSelect
-      bg="#5E5E5E"
-      expand="md"
-      variant="light"
-      sticky="top"
-      className="mb-4 py-3">
+      bg='#5E5E5E'
+      expand='md'
+      variant='light'
+      sticky='top'
+      className='mb-4 py-3'>
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to='/'>
           MyFlix
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='me-auto'>
             {!user && (
               <>
-                <Nav.Link as={Link} to="/login">
+                <Nav.Link as={Link} to='/login'>
                   Login
                 </Nav.Link>
-                <Nav.Link as={Link} to="/signup">
+                <Nav.Link as={Link} to='/signup'>
                   Signup
                 </Nav.Link>
               </>
             )}
             {user && (
               <>
-                <Nav className="ml-auto">
-                  <Nav.Link as={Link} to="/">
+                <Nav className='ml-auto'>
+                  <Nav.Link as={Link} to='/'>
                     Home
                   </Nav.Link>
 
-                  <Nav.Link as={Link} to="/profile">
+                  <Nav.Link as={Link} to='/profile'>
                     Profile
                   </Nav.Link>
                 </Nav>
 
                 <Nav>
-                  <Nav.Link onClick={onLoggedOut} className="logout-nav">
+                  <Nav.Link onClick={onLoggedOut} className='logout-nav'>
                     Logout
                   </Nav.Link>
                 </Nav>
-                <Col md={4} className="ml-auto">
+                <Col md={4} className='ml-auto'>
                   <MoviesFilter />
                 </Col>
               </>
