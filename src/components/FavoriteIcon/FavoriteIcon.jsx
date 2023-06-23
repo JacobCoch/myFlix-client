@@ -18,7 +18,7 @@ export const FavoriteIcon = ({ movie }) => {
   const toggleFavorite = () => {
     if (!token) return;
 
-    const url = `https://mymovieapidb.herokuapp.com/users/${user.Username}/${movie.Title}`;
+    const url = `https://mymovieapidb.herokuapp.com/users/${user.Username}/${movie._id}`;
 
     let requestOptions = {
       method: '',
@@ -43,7 +43,7 @@ export const FavoriteIcon = ({ movie }) => {
       .then((response) => response.json())
       .then((data) => {
         alert(`${resultAlert}`);
-
+        console.log(data);
         dispatch(setUser(data));
         dispatch(setToken(data.token));
       })
