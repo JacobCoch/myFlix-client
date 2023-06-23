@@ -6,6 +6,9 @@ export const FavoriteMovies = () => {
   const user = useSelector((state) => state.user.user);
   const movies = useSelector((state) => state.movies.movies);
 
+  console.log('user', user);
+  console.log('movies', movies);
+
   let favoriteMoviesList = [];
 
   if (user && user.FavoriteMovies) {
