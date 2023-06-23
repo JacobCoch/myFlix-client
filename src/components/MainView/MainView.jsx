@@ -3,18 +3,24 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setMovies } from '../../redux/reducers/movies';
 import { setUser } from '../../redux/reducers/user';
-
 import { Col, Container, Row } from 'react-bootstrap';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { LoginView } from '../LoginView/LoginView.jsx';
-import { MoviesList } from '../MoviesList/MoviesList.jsx';
-import { MovieView } from '../MovieView/MovieView'; //? why no .jsx?
-import { NavBar } from '../NavBar/navbar'; //? why cant this be PascalCase??
-import { ProfileView } from '../ProfileView/ProfileView.jsx';
+//! ommit .jsx
+import { LoginView } from '../LoginView/LoginView';
+import { MoviesList } from '../MoviesList/MoviesList';
+import { MovieView } from '../MovieView/MovieView';
+import { NavBar } from '../NavBar/NavBar';
+import { ProfileView } from '../ProfileView/ProfileView';
 import { SignupView } from '../SignupView/SignupView';
 
 import './MainView.scss';
 
+/**
+ * Mainview component that renders all the other components
+ * @component
+ *
+ * @returns
+ */
 export const MainView = () => {
   const movies = useSelector((state) => state.movies.movies);
   const user = useSelector((state) => state.user.user);
