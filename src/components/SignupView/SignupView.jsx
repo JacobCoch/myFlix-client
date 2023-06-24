@@ -34,53 +34,63 @@ export const SignupView = () => {
   };
 
   return (
-    <Container className="login-signup-container">
+    <Container className='signup-container'>
+      <div>
+        <h2
+          className='welcome-text'
+          style={{
+            textAlign: 'center',
+            marginBottom: '20px',
+          }}>
+          Welcome to MyFlix
+        </h2>
+      </div>
       <Row>
         <Col>
           <CardGroup>
-            <Card className="border-0">
+            <Card className='border-0'>
               <Card.Body>
                 <Form onSubmit={handleSubmit}>
-                  <Form.Group controlId="formUsername">
+                  <Form.Group controlId='formUsername'>
                     <Form.Label>Username</Form.Label>
                     <Form.Control
-                      type="text"
-                      placeholder="Enter username"
+                      type='text'
+                      placeholder='Enter username'
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       required
                       minLength={5}
-                      name="username"
+                      name='username'
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formPassword">
+                  <Form.Group controlId='formPassword'>
                     <Form.Label>Password</Form.Label>
                     <Form.Control
-                      type="password"
-                      placeholder="Password"
+                      type='password'
+                      placeholder='Password'
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formEmail">
+                  <Form.Group controlId='formEmail'>
                     <Form.Label>Email</Form.Label>
                     <Form.Control
-                      type="email"
-                      placeholder="Enter email"
+                      type='email'
+                      placeholder='Enter email'
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formBirthday">
+                  <Form.Group controlId='formBirthday'>
                     <Form.Label>Birthday</Form.Label>
                     <Form.Control
-                      type="date"
-                      placeholder="Enter birthday"
+                      type='date'
+                      placeholder='Enter birthday'
                       value={birthday}
                       onChange={(e) => setBirthday(e.target.value)}
                       required
@@ -88,9 +98,9 @@ export const SignupView = () => {
                   </Form.Group>
 
                   <Button
-                    variant="primary"
-                    type="submit"
-                    className="mt-3 float-end">
+                    variant='primary'
+                    type='submit'
+                    className='mt-3 float-end'>
                     Submit
                   </Button>
                 </Form>
