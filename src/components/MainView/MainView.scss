@@ -51,13 +51,15 @@
 // .logout-nav {
 // }
 
+.navbar {
+  background-color: #b98b66ce;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  /* Adjust the shadow properties as needed */
+}
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #b98b66ce;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  /* Adjust the shadow properties as needed */
 }
 
 // ----------------------------------------------------Movie Card
