@@ -19,11 +19,10 @@ export const NavBar = () => {
   return (
     <Navbar
       collapseOnSelect
-      bg='#5E5E5E'
       expand='md'
       variant='light'
       sticky='top'
-      className='mb-4 py-3'>
+      id='custom-navbar'>
       <Container>
         <Navbar.Brand as={Link} to='/'>
           MyFlix
@@ -47,12 +46,10 @@ export const NavBar = () => {
                   <Nav.Link as={Link} to='/'>
                     Home
                   </Nav.Link>
-
                   <Nav.Link as={Link} to='/profile'>
                     Profile
                   </Nav.Link>
                 </Nav>
-
                 <Nav>
                   <Nav.Link onClick={onLoggedOut} className='logout-nav'>
                     Logout
