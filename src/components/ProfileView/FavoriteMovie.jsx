@@ -6,16 +6,9 @@ export const FavoriteMovies = () => {
   const user = useSelector((state) => state.user.user);
   const movies = useSelector((state) => state.movies.movies);
 
-  console.log('user', user);
-  console.log('movies', movies);
-
-  let favoriteMoviesList = [];
-
-  if (user && user.FavoriteMovies) {
-    favoriteMoviesList = movies.filter((m) =>
-      user.FavoriteMovies.includes(m._id)
-    );
-  }
+  const favoriteMoviesList = movies.filter((m) =>
+    user?.FavoriteMovies?.includes(m._id)
+  );
 
   const filter = useSelector((state) => state.movies.filter)
     .trim()
@@ -27,7 +20,7 @@ export const FavoriteMovies = () => {
 
   return (
     <Row>
-      {favoriteMoviesList.length === 0 ? (
+      {filteredMovies.length === 0 ? (
         <Col>The list of favorite movies is empty</Col>
       ) : (
         <>
