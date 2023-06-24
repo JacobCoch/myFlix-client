@@ -17,13 +17,8 @@ export const NavBar = () => {
   };
 
   return (
-    <Navbar
-      collapseOnSelect
-      expand='md'
-      variant='light'
-      sticky='top'
-      id='custom-navbar'>
-      <Container>
+    <Navbar collapseOnSelect expand='md' variant='light' sticky='top'>
+      <Container className='navbar-container'>
         <Navbar.Brand as={Link} to='/'>
           MyFlix
         </Navbar.Brand>
@@ -42,7 +37,7 @@ export const NavBar = () => {
             )}
             {user && (
               <>
-                <Nav className='ml-auto'>
+                <Nav className='me-auto'>
                   <Nav.Link as={Link} to='/'>
                     Home
                   </Nav.Link>
@@ -50,12 +45,10 @@ export const NavBar = () => {
                     Profile
                   </Nav.Link>
                 </Nav>
-                <Nav>
+                <Col md={4} className='search-nav ml-auto'>
                   <Nav.Link onClick={onLoggedOut} className='logout-nav'>
                     Logout
                   </Nav.Link>
-                </Nav>
-                <Col md={4} className='ml-auto'>
                   <MoviesFilter />
                 </Col>
               </>

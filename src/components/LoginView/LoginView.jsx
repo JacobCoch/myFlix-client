@@ -12,6 +12,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../redux/reducers/token';
 import { setUser } from '../../redux/reducers/user';
+import { Link } from 'react-router-dom';
 
 export const LoginView = () => {
   const [username, setUsername] = useState('');
@@ -99,6 +100,9 @@ export const LoginView = () => {
                   </Form.Group>
                   <Row>
                     <Col className='text-end'>
+                      <Link to='/signup' className='mt-3 signup-link'>
+                        Sign Up Here!
+                      </Link>
                       <Button variant='primary' type='submit' className='mt-3'>
                         Submit
                       </Button>

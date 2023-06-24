@@ -1,35 +1,9 @@
-// -------------------------------------------Body
-
-element.style {
-  background-color: #dcb482;
-}
-
 // ------------------------------------Login View & Signup View\
 .welcome-text {
-  color: #dcb482;
+  color: #fff;
 }
 
-.login-container {
-  background-color: #5e5e5e;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  /* Adjust the shadow properties as needed */
-
-  /* Center the container */
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  /* Make the container slightly larger */
-  width: 400px;
-  max-width: 90%;
-
-  margin-top: 80px;
-}
-
+.login-container,
 .signup-container {
   background-color: #5e5e5e;
   padding-top: 20px;
@@ -48,8 +22,19 @@ element.style {
   width: 400px;
   max-width: 90%;
 
-  /* Add spacing between the forms and the navbar */
   margin-top: 80px;
+}
+
+.signup-link {
+  text-decoration: none;
+  text-align: left;
+}
+
+.text-end {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  flex-direction: row;
 }
 
 // -------------------------------------------------Navbar
@@ -58,10 +43,18 @@ element.style {
   color: white;
   &:hover {
     opacity: 0.8;
+    color: white;
   }
 }
 
-#custom-navbar {
+// .search-nav,
+// .logout-nav {
+// }
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #b98b66ce;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   /* Adjust the shadow properties as needed */
