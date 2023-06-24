@@ -4,7 +4,7 @@
   "description": "This is a MERN stack project. This particular repo is for React.",
   "scripts": {
     "test": "index.jsx",
-    "start": "react-scripts start"
+    "start": "parcel src/index.html"
   },
   "repository": {
     "type": "git",
