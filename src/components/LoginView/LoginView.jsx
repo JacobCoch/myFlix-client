@@ -54,41 +54,52 @@ export const LoginView = () => {
   };
 
   return (
-    <Container className="login-signup-container">
+    <Container className='login-container'>
+      <div>
+        <h2
+          className='welcome-text'
+          style={{
+            textAlign: 'center',
+            color: '##dcb482',
+            marginBottom: '20px',
+          }}>
+          Welcome to MyFlix
+        </h2>
+      </div>
       <Row>
         <Col>
           <CardGroup>
-            <Card className="border-0">
+            <Card className='border-0'>
               <Card.Body>
                 <Form onSubmit={handleSubmit}>
-                  <Form.Group controlId="formUsername" className="mt-2">
+                  <Form.Group controlId='formUsername' className='mt-2'>
                     <Form.Label>Username </Form.Label>
                     <Form.Control
-                      type="text"
+                      type='text'
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       required
-                      minLength="3"
+                      minLength='3'
                       pattern="^[A-Za-z0-9 .,'\-!?%&]+$"
                       title="Username should contain more than 3 characters, may only contain letters, numbers and special characters: .,'-!?%&"
-                      placeholder="Enter your name"
+                      placeholder='Enter your name'
                     />
                   </Form.Group>
-                  <Form.Group controlId="formPassword" className="mt-3">
+                  <Form.Group controlId='formPassword' className='mt-3'>
                     <Form.Label>Password </Form.Label>
                     <Form.Control
-                      type="password"
+                      type='password'
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
                       pattern="^[A-Za-z0-9 .,'\-!?%&]+$"
                       title="Password may only contain letters, numbers and special characters: .,'-!?%&"
-                      placeholder="Enter your password"
+                      placeholder='Enter your password'
                     />
                   </Form.Group>
                   <Row>
-                    <Col className="text-end">
-                      <Button variant="primary" type="submit" className="mt-3">
+                    <Col className='text-end'>
+                      <Button variant='primary' type='submit' className='mt-3'>
                         Submit
                       </Button>
                     </Col>
