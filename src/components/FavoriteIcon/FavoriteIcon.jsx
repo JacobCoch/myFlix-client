@@ -1,9 +1,10 @@
 import { useState } from 'react'; // Import useState
-import { FaHeart } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { setToken } from '../../redux/reducers/token';
+
 import { setUser } from '../../redux/reducers/user';
+
+import { Button, ButtonGroup } from 'react-bootstrap';
+import { movieRemoved } from '../../redux/reducers/removeMovie';
 
 export const FavoriteIcon = ({ movie }) => {
   const user = useSelector((state) => state.user.user);
@@ -11,9 +12,11 @@ export const FavoriteIcon = ({ movie }) => {
 
   const dispatch = useDispatch();
 
-  const alreadyFavorite = user?.FavoriteMovies?.includes(movie._id);
+  const alreadyFavorite = user?.FavoriteMovies?.find(
+    (favMovieId) => favMovieId === movie._id
+  );
 
-  const [iconClassName, setIconClassName] = useState('favorite-icon');
+  const [favorite, setFavorite] = useState(alreadyFavorite ? true : false);
 
   const toggleFavorite = () => {
     if (!token) return;
@@ -27,38 +30,49 @@ export const FavoriteIcon = ({ movie }) => {
       },
     };
 
-    let resultAlert = '';
-
     if (alreadyFavorite) {
       requestOptions.method = 'DELETE';
-      resultAlert = `${movie.Title} is deleted from the list of favorites`;
-      setIconClassName('favorite-icon');
+
+      setFavorite(false);
     } else {
       requestOptions.method = 'POST';
-      resultAlert = `${movie.Title} is added to the list of favorites`;
-      setIconClassName('favorite-icon favorite-movie');
+
+      setFavorite(true);
     }
 
     fetch(url, requestOptions)
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
-        alert(`${resultAlert}`);
-        console.log(data);
         dispatch(setUser(data));
-        dispatch(setToken(data.token));
       })
       .catch((e) => {
         alert('Something went wrong');
         console.log(e);
       });
   };
-
   return (
-    <Link
-      onClick={toggleFavorite}
-      className={iconClassName}
-      id='favMovieButton'>
-      <FaHeart />
-    </Link>
+    <ButtonGroup
+      className='d-flex justify-content-center align-items-center'
+      style={{ marginLeft: 2, marginRight: 2 }}>
+      {favorite ? (
+        <Button
+          variant='danger'
+          size='sm'
+          className='remove-button'
+          onClick={() => toggleFavorite()}>
+          {' '}
+          Remove
+        </Button>
+      ) : (
+        <Button
+          variant='success'
+          size='sm'
+          className='add-button'
+          onClick={() => toggleFavorite()}>
+          {' '}
+          Add
+        </Button>
+      )}
+    </ButtonGroup>
   );
 };
