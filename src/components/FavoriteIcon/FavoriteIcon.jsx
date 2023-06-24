@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../redux/reducers/user';
 
 import { Button, ButtonGroup } from 'react-bootstrap';
-import { movieRemoved } from '../../redux/reducers/removeMovie';
 
 export const FavoriteIcon = ({ movie }) => {
   const user = useSelector((state) => state.user.user);
