@@ -5,11 +5,11 @@ import { setMovies } from '../../redux/reducers/movies';
 import { setUser } from '../../redux/reducers/user';
 import { Col, Container, Row } from 'react-bootstrap';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-//! ommit .jsx
+
 import { LoginView } from '../LoginView/LoginView';
 import { MoviesList } from '../MoviesList/MoviesList';
 import { MovieView } from '../MovieView/MovieView';
-import { NavBar } from '../NavBar/NavBar';
+import { NavBar } from '../NavBar/navbar';
 import { ProfileView } from '../ProfileView/ProfileView';
 import { SignupView } from '../SignupView/SignupView';
 
