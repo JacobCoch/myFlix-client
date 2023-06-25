@@ -5,7 +5,6 @@ import { setToken } from '../../redux/reducers/token';
 import { setUser } from '../../redux/reducers/user';
 
 import { MoviesFilter } from '../MoviesFilter/MoviesFilter';
-import '../../index.scss';
 
 export const NavBar = () => {
   const user = useSelector((state) => state.user.user);
@@ -24,13 +23,13 @@ export const NavBar = () => {
       variant='light'
       sticky='top'
       className='navbar-container d-flex justify-content-center align-items-center'>
-      <Container className='navbar-container'>
+      <Container>
         <Navbar.Brand as={Link} to='/'>
           MyFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='me-auto'>
+          <Nav className='me-auto navbar-links'>
             {!user && (
               <>
                 <Nav.Link as={Link} to='/login'>
@@ -43,7 +42,7 @@ export const NavBar = () => {
             )}
             {user && (
               <>
-                <Nav className='me-auto'>
+                <Nav>
                   <Nav.Link as={Link} to='/'>
                     Home
                   </Nav.Link>
@@ -51,12 +50,12 @@ export const NavBar = () => {
                     Profile
                   </Nav.Link>
                 </Nav>
-                <Col md={4} className='search-nav ml-auto'>
-                  <Nav.Link onClick={onLoggedOut} className='logout-nav'>
-                    Logout
-                  </Nav.Link>
+                <Nav className='logout-search'>
+                  <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                </Nav>
+                <Row md={4}>
                   <MoviesFilter />
-                </Col>
+                </Row>
               </>
             )}
           </Nav>
