@@ -3,6 +3,20 @@ html,
   background-color: #dcb482;
 }
 
+// --------------------------------------Buttons
+#card-button {
+  background-color: #fff;
+  outline: none;
+  color: black;
+}
+#card-button:hover {
+  outline: none;
+  opacity: 0.8;
+}
+
+.add-button {
+  max-width: 43px;
+}
 // ------------------------------------Login View & Signup View\
 .welcome-text {
   color: #fff;
@@ -70,15 +84,6 @@ html,
 }
 
 // ----------------------------------------------------Movie Card
-#card-button {
-  background-color: #dcb482;
-  outline: none;
-}
-#card-button:hover {
-  background-color: #dcb482;
-  outline: auto;
-  opacity: 0.8;
-}
 
 .movie-card-img {
   border-radius: 10px;
@@ -94,13 +99,9 @@ html,
 }
 
 // -------------------------------------------------------Movie View
-// #movie-details-view {
-//   display: flex;
-//   flex: 1;
-//   background-color: #5e5e5e;
-//   color: white;
-//   border-radius: 10px;
-// }
+.movieview-container {
+  padding-top: 30px;
+}
 
 .movie-view-img {
   border-radius: 10px;
