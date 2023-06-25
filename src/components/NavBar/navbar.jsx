@@ -30,16 +30,6 @@ export const NavBar = () => {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='login-links'>
-            {!user && (
-              <>
-                <Nav.Link as={Link} to='/login'>
-                  Login
-                </Nav.Link>
-                <Nav.Link as={Link} to='/signup'>
-                  Signup
-                </Nav.Link>
-              </>
-            )}
             {user && (
               <>
                 <Nav className='navbar-links'>
