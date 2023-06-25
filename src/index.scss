@@ -58,29 +58,15 @@ html,
   color: white !important;
 }
 
-// .navbar-container {
-// }
-
-// .navbar-content {
-//   display: flex;
-//   align-items: center;
-// }
-
-.navbar-links {
-  display: flex !important;
+.login-links {
+  display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding-left: 20px !important;
   width: 100%;
 }
-
-.navbar-nav {
-  padding-left: 20px !important;
-}
-
-.logout-link {
-  align-self: center !important;
+.navbar-links {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
 }
 
 // ----------------------------------------------------Movie Card

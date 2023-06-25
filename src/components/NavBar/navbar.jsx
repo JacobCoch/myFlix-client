@@ -54,10 +54,8 @@ export const NavBar = () => {
                   <Nav.Link onClick={onLoggedOut} className='logout-link'>
                     Logout
                   </Nav.Link>
-                </Nav>
-                <Row md={4}>
                   <MoviesFilter />
-                </Row>
+                </Nav>
               </>
             )}
           </Nav>
