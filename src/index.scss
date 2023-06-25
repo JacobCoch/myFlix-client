@@ -15,8 +15,21 @@ html,
 }
 
 .add-button {
-  max-width: 43px;
+  max-width: 50px;
+  max-height: 43px;
+  border-radius: 0.25rem !important;
+  color: black !important;
+  outline: none !important;
 }
+
+.remove-button {
+  max-width: 70px;
+  max-height: 43px;
+  border-radius: 0.25rem !important;
+  color: black !important;
+  outline: none !important;
+}
+
 // ------------------------------------Login View & Signup View\
 .welcome-text {
   color: #fff;
@@ -99,10 +112,16 @@ html,
 }
 
 // -------------------------------------------------------Movie View
-.movieview-container {
+#movie-details-view,
+.row {
   padding-top: 30px !important;
 }
 
 .movie-view-img {
   border-radius: 10px;
+}
+
+// --------------------------------------------Profile View
+.user-profile {
+  background-color: #5e5e5e !important;
 }

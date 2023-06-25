@@ -26,9 +26,7 @@ export const MovieView = () => {
         <Col>The list is empty</Col>
       ) : (
         <>
-          <Row
-            className='movieview-container d-flex flex-row-reverse p-3'
-            id='movie-details-view'>
+          <Row className='d-flex flex-row-reverse p-3' id='movie-details-view'>
             <Col md={5} className='text-center text-md-end'>
               <img
                 src={movie.ImagePath}

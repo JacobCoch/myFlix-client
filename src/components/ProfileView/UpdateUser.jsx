@@ -68,7 +68,7 @@ export const UpdateUser = () => {
   return (
     <CardGroup>
       <Card className="border-0">
-        <Card.Body>
+        <Card.Body className='user-profile'>
           <div className="text-start h2 mb-0">Update user info</div>
           <Form onSubmit={handleSubmit}>
             <Row className="mt-2 d-flex justify-content-between">
