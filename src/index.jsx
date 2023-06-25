@@ -8,7 +8,6 @@ import { MainView } from './components/MainView/MainView';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.scss';
-import './components/MainView/MainView.scss';
 
 const App = () => {
   return (

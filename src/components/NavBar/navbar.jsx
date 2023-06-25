@@ -5,6 +5,7 @@ import { setToken } from '../../redux/reducers/token';
 import { setUser } from '../../redux/reducers/user';
 
 import { MoviesFilter } from '../MoviesFilter/MoviesFilter';
+import '../../index.scss';
 
 export const NavBar = () => {
   const user = useSelector((state) => state.user.user);
@@ -17,7 +18,12 @@ export const NavBar = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand='md' variant='light' sticky='top'>
+    <Navbar
+      collapseOnSelect
+      expand='md'
+      variant='light'
+      sticky='top'
+      className='navbar-container d-flex justify-content-center align-items-center'>
       <Container className='navbar-container'>
         <Navbar.Brand as={Link} to='/'>
           MyFlix

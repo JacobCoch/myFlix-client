@@ -13,7 +13,7 @@ import { NavBar } from '../NavBar/navbar';
 import { ProfileView } from '../ProfileView/ProfileView';
 import { SignupView } from '../SignupView/SignupView';
 
-import './MainView.scss';
+import '../../index.scss';
 
 /**
  * Mainview component that renders all the other components
