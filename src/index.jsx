@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { MainView } from './components/MainView/MainView';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import './index.scss';
 
