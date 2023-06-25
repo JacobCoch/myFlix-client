@@ -49,32 +49,38 @@ html,
 }
 
 // -------------------------------------------------Navbar
-.me-auto,
-.navbar-links {
-  flex-wrap: wrap;
-  align-content: center;
-}
-
-.col-md-4,
-.logout-nav {
-  display: flex;
-  margin-left: auto;
-}
-
-// .navbar-nav .nav-link {
-//   display: flex;
-//   align-items: center;
-//   color: white;
-
-//   &:hover {
-//     opacity: 0.8;
-//     color: white;
-//   }
-// }
-
 .navbar {
   background-color: #b98b66ce;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+  color: white !important;
+}
+
+// .navbar-container {
+// }
+
+// .navbar-content {
+//   display: flex;
+//   align-items: center;
+// }
+
+.navbar-links {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 20px !important;
+  width: 100%;
+}
+
+.navbar-nav {
+  padding-left: 20px !important;
+}
+
+.logout-link {
+  align-self: center !important;
 }
 
 // ----------------------------------------------------Movie Card
@@ -102,11 +108,13 @@ html,
 }
 
 // -------------------------------------------------------Movie View
-#movie-details-view {
-  background-color: #5e5e5e;
-  color: white;
-  border-radius: 10px;
-}
+// #movie-details-view {
+//   display: flex;
+//   flex: 1;
+//   background-color: #5e5e5e;
+//   color: white;
+//   border-radius: 10px;
+// }
 
 .movie-view-img {
   border-radius: 10px;
