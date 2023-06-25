@@ -1,4 +1,4 @@
-import { Col, Container, Nav, Navbar } from 'react-bootstrap';
+import { Col, Row, Container, Nav, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setToken } from '../../redux/reducers/token';
@@ -22,14 +22,14 @@ export const NavBar = () => {
       expand='md'
       variant='light'
       sticky='top'
-      className='navbar-container d-flex justify-content-center align-items-center'>
-      <Container>
+      className='navbar-container'>
+      <Container className='navbar-content'>
         <Navbar.Brand as={Link} to='/'>
           MyFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='me-auto navbar-links'>
+          <Nav className='login-links'>
             {!user && (
               <>
                 <Nav.Link as={Link} to='/login'>
@@ -42,7 +42,7 @@ export const NavBar = () => {
             )}
             {user && (
               <>
-                <Nav>
+                <Nav className='navbar-links'>
                   <Nav.Link as={Link} to='/'>
                     Home
                   </Nav.Link>
@@ -50,8 +50,10 @@ export const NavBar = () => {
                     Profile
                   </Nav.Link>
                 </Nav>
-                <Nav className='logout-search'>
-                  <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                <Nav>
+                  <Nav.Link onClick={onLoggedOut} className='logout-link'>
+                    Logout
+                  </Nav.Link>
                 </Nav>
                 <Row md={4}>
                   <MoviesFilter />
