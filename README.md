@@ -7,11 +7,13 @@ Using React, build the client-side for an app called myFlix based on its existin
 [Site Link](https://themovieflicks.netlify.app/)
 
 ## App Images
-This is the Login Page: ![myflixclient](https://github.com/JarJarDinks/myFlix-client/assets/104926747/1cce2303-bbe7-42a0-b855-617efe545726)
+This is the Login Page: ![login](https://github.com/JarJarDinks/myFlix-client/assets/104926747/160388e9-66db-43aa-9370-5dbc5dc3a2ee)
 
-This is the Home Page: ![homepage](https://github.com/JarJarDinks/myFlix-client/assets/104926747/d8c544e1-6341-4b57-ba2c-df9359071b81)
+This is the Home Page: ![mainpage](https://github.com/JarJarDinks/myFlix-client/assets/104926747/384b5ba0-f01e-4a4a-900a-3a443c0980d6)
 
-This is the Movie Page: ![movieview](https://github.com/JarJarDinks/myFlix-client/assets/104926747/0769c2c7-ff25-4aba-91e7-cfdbf98edf2e)
+This is the Movie Page: ![movievview](https://github.com/JarJarDinks/myFlix-client/assets/104926747/7237d0a6-d00b-4dc0-9837-7f285b3a27eb)
+
+This is the Profile Page: ![profileveiw](https://github.com/JarJarDinks/myFlix-client/assets/104926747/153434b4-cbff-4c9c-9ce7-94e05faa2d10)
 
 ## Technologies Used
 - React
