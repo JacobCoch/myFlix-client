@@ -62,6 +62,12 @@ html,
     max-width: 100%;
   }
 }
+.login-container {
+  height: 420px;
+}
+.signup-container {
+  height: 530px;
+}
 
 .signup-link {
   text-decoration: none;
@@ -73,6 +79,16 @@ html,
   justify-content: space-evenly;
   flex-wrap: nowrap;
   flex-direction: row;
+}
+
+.redirect-buttons {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.redirect-buttons a {
+  margin-top: 1rem;
 }
 
 // -------------------------------------------------Navbar
@@ -120,7 +136,7 @@ html,
 
 .movie-view-img {
   border-radius: 10px;
-  max-height: 90%;
+  max-height: 320px;
 }
 
 // --------------------------------------------Profile View

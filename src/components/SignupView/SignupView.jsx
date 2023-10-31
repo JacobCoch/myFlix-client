@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import { Card, Container, Row, Col, CardGroup } from 'react-bootstrap';
 
 export const SignupView = () => {
@@ -96,13 +97,15 @@ export const SignupView = () => {
                       required
                     />
                   </Form.Group>
-
-                  <Button
-                    variant='primary'
-                    type='submit'
-                    className='mt-3 float-end'>
-                    Submit
-                  </Button>
+                  <div className='redirect-buttons'>
+                    <Button
+                      variant='primary'
+                      type='submit'
+                      className='submit-button'>
+                      Submit
+                    </Button>
+                    <Link to={'/login'}>Already a member? Login here.</Link>
+                  </div>
                 </Form>
               </Card.Body>
             </Card>
