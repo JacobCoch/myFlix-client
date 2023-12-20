@@ -1,17 +1,17 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { setMovies } from '../../redux/reducers/movies';
 import { setUser } from '../../redux/reducers/user';
-import { Col, Container, Row } from 'react-bootstrap';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-
-import { LoginView } from '../LoginView/LoginView';
-import { MoviesList } from '../MoviesList/MoviesList';
-import { MovieView } from '../MovieView/MovieView';
-import { NavBar } from '../NavBar/navbar';
-import { ProfileView } from '../ProfileView/ProfileView';
-import { SignupView } from '../SignupView/SignupView';
+import LoginView from '../LoginView/LoginView';
+import MoviesList from '../MoviesList/MoviesList';
+import MovieView from '../MovieView/MovieView';
+import NavBar from '../NavBar/navbar';
+import ProfileView from '../ProfileView/ProfileView';
+import SignupView from '../SignupView/SignupView';
 
 import '../../index.scss';
 
@@ -21,10 +21,11 @@ import '../../index.scss';
  *
  * @returns
  */
-export const MainView = () => {
+function MainView() {
   const movies = useSelector((state) => state.movies.movies);
   const user = useSelector((state) => state.user.user);
   const token = useSelector((state) => state.token.token);
+  const [shouldRenderNavBar, setShouldRenderNavBar] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -85,9 +86,18 @@ export const MainView = () => {
     getMovies();
   }, [token, dispatch]);
 
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    setShouldRenderNavBar(
+      ['/', '/movies/:movieId', '/users/:username', '/profile'].includes(
+        currentPath
+      )
+    );
+  }, [window.location.pathname]);
+
   return (
     <BrowserRouter>
-      <NavBar />
+      {shouldRenderNavBar && <NavBar />}
       <Container>
         <Row className='justify-content-md-center'>
           <Routes>
@@ -181,4 +191,6 @@ export const MainView = () => {
       </Container>
     </BrowserRouter>
   );
-};
+}
+
+export default MainView;

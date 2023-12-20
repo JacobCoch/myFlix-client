@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
-import { Card, Container, Row, Col, CardGroup } from 'react-bootstrap';
 
-export const SignupView = () => {
+import { Card, Container, Row, Col, CardGroup } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
+
+function SignupView() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -49,7 +50,7 @@ export const SignupView = () => {
       <Row>
         <Col>
           <CardGroup>
-            <Card className='border-0'>
+            <Card className='border-0' id='form'>
               <Card.Body>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group controlId='formUsername'>
@@ -104,7 +105,7 @@ export const SignupView = () => {
                       className='submit-button'>
                       Submit
                     </Button>
-                    <Link to={'/login'}>Already a member? Login here.</Link>
+                    <Link to='/login'>Already a member? Login here.</Link>
                   </div>
                 </Form>
               </Card.Body>
@@ -114,4 +115,6 @@ export const SignupView = () => {
       </Row>
     </Container>
   );
-};
+}
+
+export default SignupView;

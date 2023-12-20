@@ -1,11 +1,12 @@
-import { useState } from 'react'; // Import useState
+import React, { useState } from 'react'; // Import useState
+
+import PropTypes from 'prop-types'; // Import proptypes
+import { Button, ButtonGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setUser } from '../../redux/reducers/user';
 
-import { Button, ButtonGroup } from 'react-bootstrap';
-
-export const FavoriteIcon = ({ movie }) => {
+function FavoriteIcon({ movie }) {
   const user = useSelector((state) => state.user.user);
   const token = localStorage.getItem('token');
 
@@ -15,14 +16,14 @@ export const FavoriteIcon = ({ movie }) => {
     (favMovieId) => favMovieId === movie._id
   );
 
-  const [favorite, setFavorite] = useState(alreadyFavorite ? true : false);
+  const [favorite, setFavorite] = useState(!!alreadyFavorite);
 
   const toggleFavorite = () => {
     if (!token) return;
 
     const url = `https://mymovieapidb.herokuapp.com/users/${user.Username}/${movie._id}`;
 
-    let requestOptions = {
+    const requestOptions = {
       method: '',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -74,4 +75,12 @@ export const FavoriteIcon = ({ movie }) => {
       )}
     </ButtonGroup>
   );
+}
+
+FavoriteIcon.propTypes = {
+  movie: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+  }).isRequired,
 };
+
+export default FavoriteIcon;

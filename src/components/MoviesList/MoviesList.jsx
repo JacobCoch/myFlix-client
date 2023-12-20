@@ -1,9 +1,12 @@
+import React from 'react';
+
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
-import { MovieCard } from '../MovieCard/MovieCard.jsx';
 
-export const MoviesList = () => {
+import MovieCard from '../MovieCard/MovieCard';
+
+function MoviesList() {
   const movies = useSelector((state) => state.movies.movies);
   const filter = useSelector((state) => state.movies.filter)
     .trim()
@@ -24,7 +27,7 @@ export const MoviesList = () => {
               movie // else, display movies
             ) => (
               <Col
-                className="mb-5"
+                className='mb-5 mt-3'
                 key={movie._id}
                 xs={12}
                 sm={6}
@@ -38,4 +41,6 @@ export const MoviesList = () => {
       </Row>
     </>
   );
-};
+}
+
+export default MoviesList;

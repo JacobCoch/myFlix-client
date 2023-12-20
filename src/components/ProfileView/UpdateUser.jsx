@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { Button, Card, CardGroup, Col, Form, Row } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from '../../redux/reducers/user';
+import React, { useState } from 'react';
 
 import moment from 'moment';
+import { Button, Card, CardGroup, Col, Form, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const UpdateUser = () => {
+import { setUser } from '../../redux/reducers/user';
+
+function UpdateUser() {
   const token = localStorage.getItem('token');
   const user = useSelector((state) => state.user.user);
 
@@ -48,7 +49,7 @@ export const UpdateUser = () => {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     })
@@ -61,68 +62,68 @@ export const UpdateUser = () => {
         }
       })
       .catch((error) => {
-        console.log('Error: ${error}');
+        `Error: ${error}`;
       });
   };
 
   return (
     <CardGroup>
-      <Card className="border-0">
+      <Card className='border-0'>
         <Card.Body className='user-profile'>
-          <div className="text-start h2 mb-0">Update user info</div>
+          <div className='text-start h2 mb-0 text-black'>Update user info</div>
           <Form onSubmit={handleSubmit}>
-            <Row className="mt-2 d-flex justify-content-between">
+            <Row className='mt-2 d-flex justify-content-between'>
               <Col md={6}>
-                <Form.Group controlId="forUsername" className="mt-2">
+                <Form.Group controlId='forUsername' className='mt-2'>
                   <Form.Label>Username:</Form.Label>
                   <Form.Control
-                    type="text"
+                    type='text'
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
-                    minLength="3"
+                    minLength='3'
                     pattern="^[A-Za-z0-9 .,'\-!?%&]+$"
                     title="Username should contain more than 3 characters, may only contain letters, numbers and special characters: .,'-!?%&"
-                    placeholder="Enter your name"
+                    placeholder='Enter your name'
                   />
-                  <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
                 </Form.Group>
               </Col>
               <Col md={6}>
-                <Form.Group controlId="forPassword" className="mt-2">
+                <Form.Group controlId='forPassword' className='mt-2'>
                   <Form.Label>Password:</Form.Label>
                   <Form.Control
-                    type="password"
+                    type='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     pattern="^[A-Za-z0-9 .,'\-!?%&]+$"
                     title="Password may only contain letters, numbers and special characters: .,'-!?%&"
-                    placeholder="Create a password"
+                    placeholder='Create a password'
                   />
                 </Form.Group>
               </Col>
             </Row>
-            <Row className="d-flex justify-content-between">
+            <Row className='d-flex justify-content-between'>
               <Col md={6}>
-                <Form.Group controlId="forEmail" className="mt-2">
+                <Form.Group controlId='forEmail' className='mt-2'>
                   <Form.Label>Email:</Form.Label>
                   <Form.Control
-                    type="email"
+                    type='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    placeholder="Enter email"
+                    placeholder='Enter email'
                   />
+                  <Form.Text className='text-muted'>
+                    We&apos;ll never share your email with anyone else.
+                  </Form.Text>
                 </Form.Group>
               </Col>
               <Col md={6}>
-                <Form.Group controlId="forBirthday" className="mt-2">
+                <Form.Group controlId='forBirthday' className='mt-2'>
                   <Form.Label>Birthday:</Form.Label>
                   <Form.Control
-                    type="date"
+                    type='date'
                     value={moment(birthday).format('YYYY-MM-DD')}
                     onChange={(e) => setBirthday(e.target.value)}
                   />
@@ -130,8 +131,8 @@ export const UpdateUser = () => {
               </Col>
             </Row>
             <Row>
-              <Col className="text-end">
-                <Button variant="primary" type="submit" className="mt-3">
+              <Col className='text-end'>
+                <Button variant='primary' type='submit' className='mt-3'>
                   Update
                 </Button>
               </Col>
@@ -141,4 +142,6 @@ export const UpdateUser = () => {
       </Card>
     </CardGroup>
   );
-};
+}
+
+export default UpdateUser;

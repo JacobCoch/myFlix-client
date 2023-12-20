@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+
 import {
   Button,
   Card,
@@ -8,13 +9,13 @@ import {
   Form,
   Row,
 } from 'react-bootstrap';
-
 import { useDispatch } from 'react-redux';
-import { setToken } from '../../redux/reducers/token';
-import { setUser } from '../../redux/reducers/user';
 import { Link } from 'react-router-dom';
 
-export const LoginView = () => {
+import { setToken } from '../../redux/reducers/token';
+import { setUser } from '../../redux/reducers/user';
+
+function LoginView() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -118,4 +119,6 @@ export const LoginView = () => {
       </Row>
     </Container>
   );
-};
+}
+
+export default LoginView;

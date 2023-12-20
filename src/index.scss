@@ -1,6 +1,8 @@
 html,
 #root {
-  background-color: #dcb482;
+  background: url("https://gearmoose.com/wp-content/uploads/2021/06/Best-Movies-to-Watch-on-the-4th-of-July.jpg");
+  background-size: auto;
+  
 }
 
 // --------------------------------------Buttons
@@ -32,28 +34,26 @@ html,
 
 // ------------------------------------Login View & Signup View\
 .welcome-text {
-  color: #fff;
+  color: #161A30;
 }
 
 .login-container,
 .signup-container {
-  background-color: #5e5e5e;
+  
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   /* Adjust the shadow properties as needed */
 
-  /* Center the container */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  /* Make the container slightly larger */
-  width: 90% !important;
-  max-width: 450px !important;
+  width: 500px !important;
 
+background: rgba(255, 255, 255, 0.6);
   margin-top: 20px;
 
   // Responsive
@@ -67,6 +67,12 @@ html,
 }
 .signup-container {
   height: 530px;
+}
+@media (max-width: 275px) {
+  
+  .signup-container {
+    height: 550px;
+  }
 }
 
 .signup-link {
@@ -89,13 +95,22 @@ html,
 }
 .redirect-buttons a {
   margin-top: 1rem;
+  text-decoration: none;
 }
 
 // -------------------------------------------------Navbar
-.navbar {
-  background-color: #b98b66ce;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+.navbar-search-container {
+  align-items: center;
 }
+.navbar {
+  background-color: #161A30;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+}
+.navbar a {
+  color: white !important;
+  text-decoration: none !important;
+}
+
 
 .navbar-brand {
   color: white !important;
@@ -106,6 +121,16 @@ html,
   justify-content: space-between;
   width: 100%;
 }
+
+.logout-link {
+  margin-right: 1rem !important;
+}
+
+// .form-control {
+  //border-radius: 0.25rem !important;
+    //height: 31px !important;
+    //width: 150px !important;
+//}
 .navbar-links {
   display: flex !important;
   align-items: center;
@@ -114,32 +139,73 @@ html,
 
 // ----------------------------------------------------Movie Card
 
+.container
 .movie-card-img {
   border-radius: 10px;
-  max-height: 90%;
+
 }
 
-#card-text {
-  color: white;
+#card-title {
+  color: #31304D;
+  font-style: bold;
 }
+
+
 
 #card-container {
-  background-color: #5e5e5e;
+  background-color: #B6BBC4;
+  border-radius: 10px;
+
+
 }
 
 // -------------------------------------------------------Movie View
+.movie-row {
+  display: flex;
+  flex-direction: row;
+
+}
+
+
 #movie-details-view,
 .row {
   padding-top: 30px !important;
-  max-height: 300px;
+
+}
+
+#movie-details-view {
+  background-color: rgba(49, 48, 77, 0.9);
+  margin-top: 3rem !important;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6) !important;
+  
+
 }
 
 .movie-view-img {
   border-radius: 10px;
-  max-height: 320px;
+  height: 300px !important;
 }
 
+.similar-movies-container {
+  margin-top: 4rem !important;
+}
+.similar-movies-container h2 {
+  margin-bottom: 1rem !important;
+  color: #161A30;
+}
 // --------------------------------------------Profile View
 .user-profile {
-  background-color: #5e5e5e !important;
+  background-color: rgba(240,236,229,) !important;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.4) !important;
+}
+
+#user-info {
+  background-color: rgba(240,236,229, 0.9) !important;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6) !important;
+  margin-top: 3rem !important;
+  padding-top: 1 !important;
+  margin-bottom: 1rem !important;
 }

@@ -1,12 +1,14 @@
-import { Col, Row, Container, Nav, Navbar } from 'react-bootstrap';
+import React from 'react';
+
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { setToken } from '../../redux/reducers/token';
 import { setUser } from '../../redux/reducers/user';
+import MoviesFilter from '../MoviesFilter/MoviesFilter';
 
-import { MoviesFilter } from '../MoviesFilter/MoviesFilter';
-
-export const NavBar = () => {
+function NavBar() {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ export const NavBar = () => {
       collapseOnSelect
       expand='md'
       variant='light'
-      sticky='top'
+      fixed='top'
       className='navbar-container'>
       <Container className='navbar-content'>
         <Navbar.Brand as={Link} to='/'>
@@ -40,7 +42,7 @@ export const NavBar = () => {
                     Profile
                   </Nav.Link>
                 </Nav>
-                <Nav>
+                <Nav className='navbar-search-container'>
                   <Nav.Link onClick={onLoggedOut} className='logout-link'>
                     Logout
                   </Nav.Link>
@@ -53,4 +55,6 @@ export const NavBar = () => {
       </Container>
     </Navbar>
   );
-};
+}
+
+export default NavBar;

@@ -1,21 +1,22 @@
-import { createRoot } from 'react-dom/client';
+import React from 'react';
 
-import { store } from './redux/store';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
-import { MainView } from './components/MainView/MainView';
+import MainView from './components/MainView/MainView';
+import store from './redux/store';
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.scss';
 
-const App = () => {
+function App() {
   return (
     <Provider store={store}>
       <MainView />
     </Provider>
   );
-};
+}
 
 const container = document.querySelector('#root'); // #root is the id of the div in index.html
 const root = createRoot(container); // createRoot is a new API in React 18

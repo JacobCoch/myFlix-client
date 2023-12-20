@@ -1,0 +1,51 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended"
+  ],
+
+  "plugins": [
+    "prettier",
+    "import"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] } ],
+    "prettier/prettier": "warn",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "no-undef": "off",
+    "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
+    "no-shadow": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "no-nested-ternary": "off",
+    "react/forbid-prop-types": "off",
+    "no-alert": "off",
+    "no-restricted-globals": "off",
+    "no-unused-expressions": "off"
+  }
+}
+
+  
+

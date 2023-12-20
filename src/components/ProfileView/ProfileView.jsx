@@ -1,11 +1,13 @@
+import React from 'react';
+
 import { useSelector } from 'react-redux';
 
-import { DeleteUser } from './DeleteUser';
-import { FavoriteMovies } from './FavoriteMovie';
-import { UpdateUser } from './UpdateUser';
-import { UserInfo } from './UserInfo';
+import DeleteUser from './DeleteUser';
+import FavoriteMovies from './FavoriteMovie';
+import UpdateUser from './UpdateUser';
+import UserInfo from './UserInfo';
 
-export const ProfileView = () => {
+function ProfileView() {
   const movies = useSelector((state) => state.movies.movies);
 
   return (
@@ -16,4 +18,6 @@ export const ProfileView = () => {
       <FavoriteMovies movies={movies} />
     </>
   );
-};
+}
+
+export default ProfileView;
