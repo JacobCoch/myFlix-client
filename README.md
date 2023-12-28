@@ -7,13 +7,14 @@ Using React, build the client-side for an app called myFlix based on its existin
 [Site Link](https://themovieflicks.netlify.app/)
 
 ## App Images
-This is the Login Page: ![login](https://github.com/JarJarDinks/myFlix-client/assets/104926747/160388e9-66db-43aa-9370-5dbc5dc3a2ee)
+This is the Login Page: ![login-page](https://github.com/JacobCoch/myFlix-client/assets/104926747/a11b2e0f-2859-4929-be3b-9b835e0f067a)
 
-This is the Home Page: ![mainpage](https://github.com/JarJarDinks/myFlix-client/assets/104926747/384b5ba0-f01e-4a4a-900a-3a443c0980d6)
+This is the Home Page: ![home-page](https://github.com/JacobCoch/myFlix-client/assets/104926747/88eb2459-c084-42dc-ac2b-a50af9b26952)
 
-This is the Movie Page: ![movievview](https://github.com/JarJarDinks/myFlix-client/assets/104926747/7237d0a6-d00b-4dc0-9837-7f285b3a27eb)
+This is the Movie Page: ![movie-view](https://github.com/JacobCoch/myFlix-client/assets/104926747/7ed0af38-f726-473f-905c-20c803296927)
 
-This is the Profile Page: ![profileveiw](https://github.com/JarJarDinks/myFlix-client/assets/104926747/153434b4-cbff-4c9c-9ce7-94e05faa2d10)
+This is the Profile Page: ![profile-page](https://github.com/JacobCoch/myFlix-client/assets/104926747/3f397cc7-7891-4034-a185-0cd238deb438)
+
 
 ## Technologies Used
 - React
