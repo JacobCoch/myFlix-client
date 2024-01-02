@@ -51,7 +51,7 @@ function NavBar() {
                 </Nav>
                 <div className='developer'>
                   <a
-                    href='www.jacobcoch.com'
+                    href='https://www.jacobcoch.com'
                     className='developer-link'
                     target='_blank'
                     rel='noreferrer'>
